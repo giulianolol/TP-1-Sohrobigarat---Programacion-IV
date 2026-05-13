@@ -1,9 +1,24 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+// import { RouterLink } from '@angular/router';
+import { AuthService } from '../../services/auth';
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './home.html',
-  styleUrl: './home.css',
+  styleUrls: ['./home.css'],
 })
-export class Home {}
+export class Home {
+
+  user$: any;
+
+  constructor(private auth: AuthService) {
+    this.user$ = this.auth.user$;
+  }
+
+  logout() {
+    this.auth.logout();
+  }
+}

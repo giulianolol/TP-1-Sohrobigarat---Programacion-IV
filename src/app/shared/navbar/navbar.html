@@ -1,36 +1,40 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-black px-4">
 
-  <!-- <span class="navbar-brand text-white">🎮 Sala de Juegos</span> -->
-
   <div class="ms-auto">
-    <a 
-      routerLink="/" 
+
+    <a
+      routerLink="/"
       routerLinkActive="active-link"
       [routerLinkActiveOptions]="{ exact: true }"
       class="nav-btn me-2">
       Home
     </a>
 
-    <a 
-      routerLink="/login" 
-      routerLinkActive="active-link"
-      class="nav-btn me-2">
-      Login
-    </a>
+    <ng-container *ngIf="!(user$ | async)">
 
-    <a 
-      routerLink="/registro" 
-      routerLinkActive="active-link"
-      class="nav-btn me-2">
-      Registro
-    </a>
+      <a
+        routerLink="/login"
+        routerLinkActive="active-link"
+        class="nav-btn me-2">
+        Login
+      </a>
 
-    <a 
-      routerLink="/quien-soy" 
+      <a
+        routerLink="/registro"
+        routerLinkActive="active-link"
+        class="nav-btn me-2">
+        Registro
+      </a>
+
+    </ng-container>
+
+    <a
+      routerLink="/quien-soy"
       routerLinkActive="active-link"
       class="nav-btn">
       Quién Soy
     </a>
+
   </div>
 
 </nav>

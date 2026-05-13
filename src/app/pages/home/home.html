@@ -1,7 +1,18 @@
 <div class="container text-center mt-5">
   <h1>🎮 Sala de Juegos</h1>
-  <p>Bienvenido a la plataforma donde podrás poner a prueba tus habilidades.</p>
+  <p>Bienvenido a la plataforma</p>
+  
+  <ng-container *ngIf="user$ | async as user">
+    <h3>
+      Bienvenido
+      {{ $any(user).user_metadata?.nombre }}
+      {{ $any(user).user_metadata?.apellido }}
+    </h3>
+    <button (click)="logout()" class="btn btn-danger m-2">Cerrar sesión</button>
+  </ng-container>
 
-  <a routerLink="/login" class="btn btn-primary m-2">Login</a>
-  <a routerLink="/registro" class="btn btn-success m-2">Registrarse</a>
+  <ng-template #noLogueado>
+    <!-- A lo mejor saco esto, revisar -->
+  </ng-template>
+
 </div>

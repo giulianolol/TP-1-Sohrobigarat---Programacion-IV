@@ -1,25 +1,21 @@
-/* Fondo navbar */
 .navbar {
-  background-color: #0f172a; /* azul oscuro casi negro */
+  background-color: #0f172a;
   box-shadow: 0 4px 10px rgba(0,0,0,0.5);
 }
 
-/* Botones */
 .nav-btn {
-  color: #e5e7eb; /* gris claro */
+  color: #e5e7eb;
   text-decoration: none;
   padding: 8px 14px;
   border-radius: 8px;
   transition: all 0.2s ease;
 }
 
-/* Hover */
 .nav-btn:hover {
-  background-color: #3b82f6; /* azul brillante */
+  background-color: #3b82f6;
   color: white;
 }
 
-/* Activo */
 .active-link {
   background-color: #2563eb;
   color: white;
