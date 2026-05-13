@@ -1,59 +1,82 @@
-# SalaJuegos
+# TP #1 - Sala de Juegos 🎮
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.7.
+**Materia:** Programación IV  
+**Alumno:** Giuliano  
+**Deploy:** https://sala-juegos-eight.vercel.app
+**Repositorio:** https://github.com/giulianolol/TP-1-Sohrobigarat---Programacion-IV
 
-## Development server
+---
 
-To start a local development server, run:
+## Tecnologías utilizadas
 
-```bash
-ng serve
-```
+- Angular
+- TypeScript
+- Bootstrap
+- Supabase
+- Vercel
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## Descripción del proyecto
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Aplicación web "Sala de Juegos" donde los usuarios pueden registrarse, iniciar sesión y medir habilidades cognitivas y motrices.
 
-```bash
-ng generate component component-name
-```
+---
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+# Sprint 1 ✅
 
-```bash
-ng generate --help
-```
+### Implementado
 
-## Building
+- Creación del proyecto Angular
+- Deploy en Vercel
+- Componentes:
+  - Login
+  - Registro
+  - Home / Bienvenida
+  - Quién Soy
+- Navegación entre componentes
+- Página "Quién Soy":
+  - Datos obtenidos desde API de GitHub
+  - Imagen de perfil
+  - Información del alumno
+  - Explicación del juego propio
+- Favicon personalizado
+- Diseño responsive con Bootstrap
 
-To build the project run:
+---
 
-```bash
-ng build
-```
+# Sprint 2 ✅
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+### Implementado
 
-## Running unit tests
+### Autenticación
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+- Registro de usuarios con:
+  - Email
+  - Nombre
+  - Apellido
+  - Edad
+  - Contraseña
 
-```bash
-ng test
-```
+- Inicio de sesión con Supabase
+- Inicio de sesión automático luego del registro
+- Cierre de sesión
+- Manejo de errores en login y registro
+- Usuarios de prueba para acceso rápido
 
-## Running end-to-end tests
+### Home dinámico
 
-For end-to-end (e2e) testing, run:
+- Si el usuario no está logueado:
+  - Botón Login
+  - Botón Registro
 
-```bash
-ng e2e
-```
+- Si el usuario está logueado:
+  - Muestra nombre y apellido
+  - Botón cerrar sesión
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+### Gestión de usuario
 
-## Additional Resources
+Los datos básicos del usuario (`nombre` y `apellido`) se almacenan utilizando `user_metadata` de Supabase Auth, evitando crear una tabla adicional innecesaria.
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+---
+Estadísticas y puntajes
