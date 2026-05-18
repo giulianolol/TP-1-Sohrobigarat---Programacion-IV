@@ -1,59 +1,75 @@
-# SalaJuegos
+# TP N°1 - Sala de Juegos 🎮
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.7.
+## Alumno
+**Giuliano Manuel Sohrobigarat**  
 
-## Development server
+## Repositorio GitHub
+**GitHub:** (https://github.com/giulianolol/TP-1-Sohrobigarat---Programacion-IV)
 
-To start a local development server, run:
+## Deploy
+**Vercel:** (https://sala-juegos-eight.vercel.app)
 
-```bash
-ng serve
-```
+---
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+# Descripción del proyecto
 
-## Code scaffolding
+Aplicación web desarrollada en **Angular** que simula una **Sala de Juegos**, permitiendo a los usuarios registrarse, iniciar sesión y acceder a distintos juegos interactivos.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+El sistema cuenta con autenticación de usuarios mediante **Supabase**, almacenamiento de puntajes y una interfaz responsive diseñada con **Bootstrap**.
 
-```bash
-ng generate component component-name
-```
+---
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+# Tecnologías utilizadas
 
-```bash
-ng generate --help
-```
+- **Angular**
+- **TypeScript**
+- **HTML**
+- **CSS**
+- **Bootstrap**
+- **Supabase**
+- **Git / GitHub**
+- **Vercel**
 
-## Building
+---
 
-To build the project run:
+# Sprint #1 
 
-```bash
-ng build
-```
+## Funcionalidades implementadas
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+### Creación del proyecto
+Inicialización y configuración del proyecto utilizando Angular.
 
-## Running unit tests
+### Componentes desarrollados
+- Home / Bienvenida
+- Login
+- Registro
+- Quién Soy
+- Navbar de navegación
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+### Navegación entre componentes
+Implementación de rutas utilizando Angular Router para permitir la navegación entre las distintas vistas sin recargar la página.
 
-```bash
-ng test
-```
+### Componente "Quién Soy"
+Se consumen datos desde la API pública de GitHub para mostrar información del alumno:
 
-## Running end-to-end tests
+- Nombre
+- Imagen de perfil
+- Biografía
+- Cantidad de repositorios
+- Seguidores
 
-For end-to-end (e2e) testing, run:
+### Juego propio definido
+**Pulso Fantasma**
 
-```bash
-ng e2e
-```
+Juego que combina reflejos, precisión y coordinación visual.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Durante la partida, una señal visual aparece de forma fugaz en una posición aleatoria de la pantalla. El jugador debe reaccionar rápidamente e intentar hacer clic en el lugar exacto donde apareció.
 
-## Additional Resources
+El sistema evalúa tanto la velocidad de respuesta como la precisión del clic, otorgando un puntaje en función del desempeño del jugador.
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+La partida finaliza cuando el jugador hace clic fuera del área determinada o no logra reaccionar a tiempo.
+
+### Favicon personalizado
+Se agregó un favicon propio al proyecto.
+
+---
