@@ -4,10 +4,10 @@
 **Giuliano Manuel Sohrobigarat**  
 
 ## Repositorio GitHub
-**GitHub:** (https://github.com/giulianolol/TP-1-Sohrobigarat---Programacion-IV)
+**GitHub:** [Repositorio del proyecto](https://github.com/giulianolol/TP-1-Sohrobigarat---Programacion-IV)
 
 ## Deploy
-**Vercel:** (https://sala-juegos-eight.vercel.app)
+**Vercel:** [Deply en Vercel](https://sala-juegos-eight.vercel.app)
 
 ---
 
