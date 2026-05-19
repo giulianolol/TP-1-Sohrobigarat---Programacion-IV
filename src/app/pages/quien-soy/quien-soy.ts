@@ -15,6 +15,7 @@ export class QuienSoy {
 
   constructor(private githubService: GithubService) {
     this.user$ = this.githubService.getUser('giulianolol');
+        console.log('Router test component loaded33333');
   }
 
 }

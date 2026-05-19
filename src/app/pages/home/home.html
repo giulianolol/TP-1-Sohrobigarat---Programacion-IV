@@ -1,18 +1,27 @@
 <div class="container text-center mt-5">
+
   <h1>🎮 Sala de Juegos</h1>
-  <p>Bienvenido a la plataforma</p>
-  
-  <ng-container *ngIf="user$ | async as user">
+  <p>Inicia sesión para comenzar a jugar :)</p>
+
+  <!-- LOGUEADO -->
+  <ng-container *ngIf="user$ | async as user; else noLogueado">
+
     <h3>
       Bienvenido
       {{ $any(user).user_metadata?.nombre }}
       {{ $any(user).user_metadata?.apellido }}
     </h3>
-    <button (click)="logout()" class="btn btn-danger m-2">Cerrar sesión</button>
+
+    <button (click)="logout()" class="btn btn-danger m-2">
+      Cerrar sesión
+    </button>
+
   </ng-container>
 
+  <!-- NO LOGUEADO -->
   <ng-template #noLogueado>
-    <!-- A lo mejor saco esto, revisar -->
+    <h4>Bienvenido invitado</h4>
+    <p>Por favor inicia sesión o regístrate para jugar</p>
   </ng-template>
-</div>
 
+</div>

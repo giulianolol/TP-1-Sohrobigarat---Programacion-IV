@@ -1,24 +1,26 @@
-<div class="container mt-5" style="max-width: 400px;">
+<div class="container">
+  <div class="card-register">
 
-  <h2 class="mb-3">Registro</h2>
+    <h2 class="mb-4">Registro</h2>
 
-  <input [(ngModel)]="nombre" placeholder="Nombre" class="form-control mb-2">
-  <input [(ngModel)]="apellido" placeholder="Apellido" class="form-control mb-2">
-  <input [(ngModel)]="edad" type="number" placeholder="Edad" class="form-control mb-2">
+    <input [(ngModel)]="nombre" placeholder="Nombre">
+    <input [(ngModel)]="apellido" placeholder="Apellido">
+    <input [(ngModel)]="edad" type="number" placeholder="Edad">
 
-  <input [(ngModel)]="email" placeholder="Email" class="form-control mb-2">
-  <input [(ngModel)]="password" type="password" placeholder="Contraseña" class="form-control mb-2">
+    <input [(ngModel)]="email" placeholder="Email">
+    <input [(ngModel)]="password" type="password" placeholder="Contraseña">
 
-  <button 
-  (click)="register()" 
-  class="btn btn-success w-100"
-  [disabled]="loading">
+    <button 
+      (click)="register()" 
+      class="btn btn-success w-100"
+      [disabled]="loading">
 
-  {{ loading ? 'Registrando...' : 'Registrarse' }}
+      {{ loading ? 'Registrando...' : 'Registrarse' }}
 
-</button>
+    </button>
 
-  <p *ngIf="error" class="text-danger mt-2">{{ error }}</p>
-  <p *ngIf="success" class="text-success mt-2">{{ success }}</p>
+    <p *ngIf="error" class="text-danger mt-3">{{ error }}</p>
+    <p *ngIf="success" class="text-success mt-3">{{ success }}</p>
 
+  </div>
 </div>

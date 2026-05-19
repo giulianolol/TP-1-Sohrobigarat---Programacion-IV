@@ -1,11 +1,50 @@
 body {
-  background: linear-gradient(135deg, #0b1120, #1e293b);
+  background: linear-gradient(135deg, #020617, #0f172a, #1e293b);
   color: #f8fafc;
   font-family: 'Segoe UI', sans-serif;
   min-height: 100vh;
   margin: 0;
+  overflow-x: hidden;
+  position: relative;
 }
 
+/* Fondo neon animado */
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  filter: blur(120px);
+  z-index: -1;
+  opacity: 0.25;
+  animation: floatGlow 12s infinite ease-in-out alternate;
+}
+
+body::before {
+  background: #3b82f6;
+  top: -150px;
+  left: -150px;
+}
+
+body::after {
+  background: #8b5cf6;
+  bottom: -150px;
+  right: -150px;
+  animation-delay: 4s;
+}
+
+@keyframes floatGlow {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(80px, 60px) scale(1.2);
+  }
+}
+
+/* NAVBAR */
 .navbar {
   background: rgba(15, 23, 42, 0.9) !important;
   backdrop-filter: blur(8px);
@@ -15,47 +54,134 @@ body {
   z-index: 1000;
 }
 
+/* CONTENEDOR */
 .container {
-  margin-top: 40px !important;
-  margin-bottom: 40px;
+  margin-top: 30px !important;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
+/* CARDS */
 .card-profile,
-.card-game {
-  background: rgba(17, 24, 39, 0.85);
-  border: 1px solid rgba(255,255,255,0.06);
+.card-game,
+.card-register {
+  background: rgba(17, 24, 39, 0.82);
+  border: 1px solid rgba(59, 130, 246, 0.15);
   border-radius: 20px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.35);
-  backdrop-filter: blur(10px);
+  box-shadow:
+    0 8px 30px rgba(0,0,0,0.35),
+    0 0 15px rgba(59,130,246,0.12);
+  backdrop-filter: blur(12px);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   padding: 25px;
+  animation: fadeUp 0.8s ease;
 }
 
 .card-profile:hover,
-.card-game:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 35px rgba(0,0,0,0.45);
+.card-game:hover,
+.card-register:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 12px 35px rgba(0,0,0,0.45),
+    0 0 25px rgba(59,130,246,0.25);
 }
 
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* CARD PERFIL */
 .card-profile {
   max-width: 360px;
   width: 100%;
-  margin: 0 auto;
+  text-align: center;
 }
 
+/* CARD JUEGO */
 .card-game {
   max-width: 700px;
-  margin: 0 auto;
+  width: 100%;
+  text-align: center;
 }
 
+/* CARD REGISTRO */
+.card-register {
+  width: 100%;
+  max-width: 430px;
+  margin: 0 auto;
+  padding: 30px;
+  text-align: center;
+}
+
+/* INPUTS */
+input,
+textarea,
+select {
+  width: 88%;
+  display: block;
+  margin: 0 auto 14px auto;
+  background: rgba(30, 41, 59, 0.75);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  border-radius: 14px;
+  padding: 13px 15px;
+  color: white;
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(8px);
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.15);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #94a3b8;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #3b82f6;
+  box-shadow:
+    0 0 0 3px rgba(59,130,246,0.15),
+    0 0 20px rgba(59,130,246,0.2);
+  transform: translateY(-2px);
+}
+
+/* LABELS */
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #cbd5e1;
+  font-weight: 500;
+  text-align: left;
+}
+
+/* AVATAR */
 .avatar {
   width: 130px;
   height: 130px;
   border-radius: 50%;
   border: 3px solid #3b82f6;
   object-fit: cover;
+  box-shadow: 0 0 25px rgba(59,130,246,0.35);
+  transition: transform 0.3s ease;
 }
 
+.avatar:hover {
+  transform: scale(1.05);
+}
+
+/* TEXTOS */
 .bio {
   color: #cbd5e1;
   font-size: 0.95rem;
@@ -70,18 +196,29 @@ h1, h2, h3 {
   font-weight: 600;
   color: white;
   text-align: center;
+  text-shadow: 0 0 10px rgba(59,130,246,0.25);
 }
 
+/* BOTONES */
 .btn {
-  border-radius: 10px;
-  padding: 8px 16px;
-  transition: all 0.2s ease;
+  border-radius: 12px;
+  padding: 10px 18px;
+  transition: all 0.25s ease;
+  border: none;
 }
 
 .btn:hover {
   transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(59,130,246,0.35);
 }
 
+.btn.w-100 {
+  width: 88% !important;
+  margin: 10px auto 0 auto;
+  display: block;
+}
+
+/* NAV BUTTONS */
 .nav-btn {
   color: white;
   text-decoration: none;

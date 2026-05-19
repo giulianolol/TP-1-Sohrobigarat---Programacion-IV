@@ -5,7 +5,7 @@ import { createClient } from '@supabase/supabase-js';
 const supabaseUrl = 'https://xvtzkirfamysiyyqbxpz.supabase.co';
 const supabaseKey = 'sb_publishable_3TZqZ8afrA62XntyBpm9HQ_B6kd_eRc';
 
-const supabase = createClient(supabaseUrl, supabaseKey);
+export const supabase = createClient(supabaseUrl, supabaseKey);
 
 @Injectable({
   providedIn: 'root',

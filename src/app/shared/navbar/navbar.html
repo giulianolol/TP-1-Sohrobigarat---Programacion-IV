@@ -2,36 +2,31 @@
 
   <div class="ms-auto">
 
-    <a
-      routerLink="/"
-      routerLinkActive="active-link"
-      [routerLinkActiveOptions]="{ exact: true }"
-      class="nav-btn me-2">
+    <a routerLink="/" class="nav-btn me-2">
       Home
     </a>
 
     <ng-container *ngIf="!(user$ | async)">
-
-      <a
-        routerLink="/login"
-        routerLinkActive="active-link"
-        class="nav-btn me-2">
+      <a routerLink="/login" class="nav-btn me-2">
         Login
       </a>
 
-      <a
-        routerLink="/registro"
-        routerLinkActive="active-link"
-        class="nav-btn me-2">
+      <a routerLink="/registro" class="nav-btn me-2">
         Registro
       </a>
-
     </ng-container>
 
-    <a
-      routerLink="/quien-soy"
-      routerLinkActive="active-link"
-      class="nav-btn">
+    <ng-container *ngIf="user$ | async">
+      <a routerLink="/menu" class="nav-btn me-2">
+        Menú
+      </a>
+
+      <a (click)="logout()" class="nav-btn me-2" style="cursor:pointer;">
+        Logout
+      </a>
+    </ng-container>
+
+    <a routerLink="/quien-soy" class="nav-btn">
       Quién Soy
     </a>
 

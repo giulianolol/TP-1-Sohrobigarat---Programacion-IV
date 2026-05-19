@@ -16,6 +16,8 @@ export class Home {
 
   constructor(private auth: AuthService) {
     this.user$ = this.auth.user$;
+    console.log('Router test component loaded22222');
+
   }
 
   logout() {
