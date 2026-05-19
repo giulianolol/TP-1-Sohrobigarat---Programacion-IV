@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { GithubService } from '../../services/github';
 import { CommonModule } from '@angular/common';
 
@@ -9,15 +9,12 @@ import { CommonModule } from '@angular/common';
   templateUrl: './quien-soy.html',
   styleUrls: ['./quien-soy.css'],
 })
-export class QuienSoy implements OnInit {
+export class QuienSoy {
 
-  user: any;
+  user$;
 
-  constructor(private githubService: GithubService) {}
-
-  ngOnInit(): void {
-    this.githubService.getUser('giulianolol').subscribe(data => {
-      this.user = data;
-    });
+  constructor(private githubService: GithubService) {
+    this.user$ = this.githubService.getUser('giulianolol');
   }
+
 }

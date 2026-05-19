@@ -1,6 +1,22 @@
-<h2>Login</h2>
-<form>
-  <input type="email" placeholder="Email" class="form-control mb-2">
-  <input type="password" placeholder="Contraseña" class="form-control mb-2">
-  <button class="btn btn-primary w-100">Ingresar</button>
-</form>
+<div class="container mt-5">
+  <h2>Login</h2>
+
+  <input [(ngModel)]="email" placeholder="Email" class="form-control mb-2">
+  <input [(ngModel)]="password" type="password" placeholder="Contraseña" class="form-control mb-2">
+
+  <button (click)="login()" class="btn btn-primary w-100">Ingresar</button>
+
+  <div *ngIf="error" class="alert alert-danger mt-3" role="alert">
+  {{ error }}
+</div>
+</div>
+
+<button (click)="email='subaru@subaru.com'; password='subaru123'; login()" class="btn btn-secondary mt-2 w-100">
+  Usuario 1
+</button>
+<button (click)="email='subaru@subaru.com'; password='subaru123'; login()" class="btn btn-secondary mt-2 w-100">
+  Usuario 2
+</button>
+<button (click)="email='subaru@subaru.com'; password='subaru123'; login()" class="btn btn-secondary mt-2 w-100">
+  Usuario 3
+</button>
