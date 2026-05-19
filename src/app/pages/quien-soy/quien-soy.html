@@ -1,24 +1,28 @@
 <div class="container d-flex justify-content-center align-items-center mt-5">
 
-  <div *ngIf="user$ | async as u" class="card-profile text-center p-4">
+  @if (user$ | async; as u) {
 
-    <img [src]="$any(u).avatar_url" class="avatar mb-3">
+    <div class="card-profile text-center p-4">
 
-    <h2>{{ $any(u).name }}</h2>
-    <p class="bio">{{ $any(u).bio }}</p>
+      <img [src]="$any(u).avatar_url" class="avatar mb-3">
 
-    <div class="stats">
-      <p><strong>Repos:</strong> {{ $any(u).public_repos }}</p>
-      <p><strong>Seguidores:</strong> {{ $any(u).followers }}</p>
+      <h2>{{ $any(u).name }}</h2>
+      <p class="bio">{{ $any(u).bio }}</p>
+
+      <div class="stats">
+        <p><strong>Repos:</strong> {{ $any(u).public_repos }}</p>
+        <p><strong>Seguidores:</strong> {{ $any(u).followers }}</p>
+      </div>
+
     </div>
 
-  </div>
+  }
 
 </div>
 
 <div class="container mt-5">
   <div class="card-game p-4">
-<h3>🎮 Mayor o Menor</h3>
+    <h3>🎮 Mayor o Menor</h3>
     <p>
       Mi juego consiste en medir los reflejos del jugador. Aparecerá un botón en pantalla en un tiempo aleatorio y el usuario deberá hacer click lo más rápido posible.
       El sistema calculará el tiempo de reacción y generará una puntuación.
