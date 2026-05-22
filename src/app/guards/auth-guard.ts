@@ -4,7 +4,7 @@ import { AuthService } from '../services/auth';
 
 export const authGuard: CanActivateFn = () => {
 
-  console.log('AUTH GUARD EJECUTADO');
+  console.log('ESTOY EJECUTANDO EL AUTGUARD AAAAAAAAA');
   
   const router = inject(Router);
   const auth = inject(AuthService);

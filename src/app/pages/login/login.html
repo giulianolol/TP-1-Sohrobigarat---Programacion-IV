@@ -1,22 +1,62 @@
 <div class="container mt-5">
-  <h2>Login</h2>
 
-  <input [(ngModel)]="email" placeholder="Email" class="form-control mb-2">
-  <input [(ngModel)]="password" type="password" placeholder="Contraseña" class="form-control mb-2">
+  <div class="card-register">
 
-  <button (click)="login()" class="btn btn-primary w-100">Ingresar</button>
+    <h2 class="mb-4">Login</h2>
 
-  <div *ngIf="error" class="alert alert-danger mt-3" role="alert">
-  {{ error }}
+    <input
+      [(ngModel)]="email"
+      placeholder="Email">
+
+    <input
+      [(ngModel)]="password"
+      type="password"
+      placeholder="Contraseña">
+
+    <button
+      (click)="login()"
+      class="btn btn-primary w-100">
+
+      Ingresar
+
+    </button>
+
+    @if (error) {
+
+      <div class="alert alert-danger mt-3" role="alert">
+        {{ error }}
+      </div>
+
+    }
+
+    <div class="mt-4">
+
+      <button
+        (click)="email='subaru@subaru.com'; password='subaru123'; login()"
+        class="btn btn-secondary mt-2 w-100">
+
+        Usuario 1
+
+      </button>
+
+      <button
+        (click)="email='subaru@subaru.com'; password='subaru123'; login()"
+        class="btn btn-secondary mt-2 w-100">
+
+        Usuario 2
+
+      </button>
+
+      <button
+        (click)="email='subaru@subaru.com'; password='subaru123'; login()"
+        class="btn btn-secondary mt-2 w-100">
+
+        Usuario 3
+
+      </button>
+
+    </div>
+
+  </div>
+
 </div>
-</div>
-
-<button (click)="email='subaru@subaru.com'; password='subaru123'; login()" class="btn btn-secondary mt-2 w-100">
-  Usuario 1
-</button>
-<button (click)="email='subaru@subaru.com'; password='subaru123'; login()" class="btn btn-secondary mt-2 w-100">
-  Usuario 2
-</button>
-<button (click)="email='subaru@subaru.com'; password='subaru123'; login()" class="btn btn-secondary mt-2 w-100">
-  Usuario 3
-</button>

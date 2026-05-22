@@ -40,10 +40,12 @@ export class Registro {
     this.loading = true;
 
     const { error } = await this.auth.register(
+
   this.email,
   this.password,
   this.nombre,
   this.apellido
+  
 );
 
     if (error) {

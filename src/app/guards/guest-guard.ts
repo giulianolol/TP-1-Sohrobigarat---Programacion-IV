@@ -4,7 +4,7 @@ import { AuthService } from '../services/auth';
 
 export const guestGuard: CanActivateFn = () => {
 
-  console.log('GUEST GUARD EJECUTADO');
+  console.log('PORQUE NO ANDAAAAAA');
   const router = inject(Router);
   const auth = inject(AuthService);
 

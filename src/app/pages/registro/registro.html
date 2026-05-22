@@ -1,17 +1,33 @@
 <div class="container">
+
   <div class="card-register">
 
     <h2 class="mb-4">Registro</h2>
 
-    <input [(ngModel)]="nombre" placeholder="Nombre">
-    <input [(ngModel)]="apellido" placeholder="Apellido">
-    <input [(ngModel)]="edad" type="number" placeholder="Edad">
+    <input
+      [(ngModel)]="nombre"
+      placeholder="Nombre">
 
-    <input [(ngModel)]="email" placeholder="Email">
-    <input [(ngModel)]="password" type="password" placeholder="Contraseña">
+    <input
+      [(ngModel)]="apellido"
+      placeholder="Apellido">
 
-    <button 
-      (click)="register()" 
+    <input
+      [(ngModel)]="edad"
+      type="number"
+      placeholder="Edad">
+
+    <input
+      [(ngModel)]="email"
+      placeholder="Email">
+
+    <input
+      [(ngModel)]="password"
+      type="password"
+      placeholder="Contraseña">
+
+    <button
+      (click)="register()"
       class="btn btn-success w-100"
       [disabled]="loading">
 
@@ -19,8 +35,21 @@
 
     </button>
 
-    <p *ngIf="error" class="text-danger mt-3">{{ error }}</p>
-    <p *ngIf="success" class="text-success mt-3">{{ success }}</p>
+    @if (error) {
+
+      <p class="text-danger mt-3">
+        {{ error }}
+      </p>
+
+    }
+
+    @if (success) {
+
+      <p class="text-success mt-3">
+        {{ success }}
+      </p>
+
+    }
 
   </div>
 </div>
