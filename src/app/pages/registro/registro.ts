@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth';
 import { Router } from '@angular/router';
@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './registro.html',
   styleUrls: ['./registro.css'],
 })
+
 export class Registro {
 
   email = '';
@@ -23,7 +24,11 @@ export class Registro {
   success = '';
   loading = false;
 
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor(
+    private auth: AuthService,
+    private router: Router,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   async register() {
 
@@ -32,40 +37,120 @@ export class Registro {
     this.error = '';
     this.success = '';
 
-    if (!this.email || !this.password || !this.nombre || !this.apellido || !this.edad) {
-      this.error = 'Completa todos los campos';
+    if (!this.nombre.trim()) {
+
+      this.error = 'Ingresa un nombre';
+      this.cdr.detectChanges();
       return;
+
+    }
+
+    if (!this.apellido.trim()) {
+
+      this.error = 'Ingresa un apellido';
+      this.cdr.detectChanges();
+      return;
+
+    }
+
+    if (!this.edad || this.edad < 1) {
+
+      this.error = 'Ingresa una edad válida';
+      this.cdr.detectChanges();
+      return;
+
+    }
+
+    if (!this.email.trim()) {
+
+      this.error = 'Ingresa un correo electrónico';
+      this.cdr.detectChanges();
+      return;
+
+    }
+
+    if (!this.email.includes('@')) {
+
+      this.error = 'Ingresa un correo electrónico válido';
+      this.cdr.detectChanges();
+      return;
+
+    }
+
+    if (!this.password.trim()) {
+
+      this.error = 'Ingresa una contraseña';
+      this.cdr.detectChanges();
+      return;
+
+    }
+
+    if (this.password.length < 6) {
+
+      this.error = 'La contraseña debe tener al menos 6 caracteres';
+      this.cdr.detectChanges();
+      return;
+
     }
 
     this.loading = true;
+    this.cdr.detectChanges();
+
 
     const { error } = await this.auth.register(
 
-  this.email,
-  this.password,
-  this.nombre,
-  this.apellido
-  
-);
+      this.email,
+      this.password,
+      this.nombre,
+      this.apellido
+
+    );
+
 
     if (error) {
-      this.error = error.message;
+
+      if (error.message.includes('User already registered')) {
+
+        this.error = 'Ese correo ya está registrado';
+
+      }
+
+      else if (error.message.includes('Password should be at least')) {
+
+        this.error = 'La contraseña debe tener al menos 6 caracteres';
+
+      }
+
+      else if (error.message.includes('Unable to validate email address')) {
+
+        this.error = 'El correo electrónico no es válido';
+
+      }
+
+      else {
+
+        this.error = 'Ocurrió un error al registrarse';
+
+      }
+
       this.loading = false;
+
+      this.cdr.detectChanges();
+
       return;
     }
 
-    const loginResult = await this.auth.login(this.email, this.password);
-
-    if (loginResult.error) {
-      this.error = loginResult.error.message;
-      this.loading = false;
-      return;
-    }
 
     this.success = 'Usuario registrado correctamente';
 
     this.loading = false;
 
-    this.router.navigate(['/']);
+    this.cdr.detectChanges();
+
+    setTimeout(() => {
+
+      this.router.navigate(['/']);
+
+    }, 1000);
   }
 }

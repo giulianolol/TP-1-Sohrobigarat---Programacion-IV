@@ -21,8 +21,11 @@ export class NavbarComponent {
     this.user$ = this.auth.user$;
   }
 
-  logout() {
-    this.auth.logout();
-    this.router.navigate(['/login']);
-  }
+  async logout() {
+
+  await this.auth.logout();
+
+  this.router.navigate(['/login']);
+
+}
 }

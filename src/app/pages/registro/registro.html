@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-5">
 
   <div class="card-register">
 
@@ -6,25 +6,31 @@
 
     <input
       [(ngModel)]="nombre"
-      placeholder="Nombre">
+      placeholder="Nombre"
+      class="form-control mb-3">
 
     <input
       [(ngModel)]="apellido"
-      placeholder="Apellido">
+      placeholder="Apellido"
+      class="form-control mb-3">
 
     <input
       [(ngModel)]="edad"
       type="number"
-      placeholder="Edad">
+      placeholder="Edad"
+      class="form-control mb-3">
 
     <input
       [(ngModel)]="email"
-      placeholder="Email">
+      type="email"
+      placeholder="Email"
+      class="form-control mb-3">
 
     <input
       [(ngModel)]="password"
       type="password"
-      placeholder="Contraseña">
+      placeholder="Contraseña"
+      class="form-control mb-3">
 
     <button
       (click)="register()"
@@ -37,19 +43,24 @@
 
     @if (error) {
 
-      <p class="text-danger mt-3">
+      <div class="alert alert-danger mt-3" role="alert">
+
         {{ error }}
-      </p>
+
+      </div>
 
     }
 
     @if (success) {
 
-      <p class="text-success mt-3">
+      <div class="alert alert-success mt-3" role="alert">
+
         {{ success }}
-      </p>
+
+      </div>
 
     }
 
   </div>
+
 </div>

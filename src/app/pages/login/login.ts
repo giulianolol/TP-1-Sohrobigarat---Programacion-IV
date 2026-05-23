@@ -22,15 +22,41 @@ constructor(
   private router: Router,
   private cdr: ChangeDetectorRef
   
-) {    console.log('ESTOYACAAA');}
+) {}
 
-  async login() {
+async login() {
+
+  if (!this.email || !this.password) {
+
+  this.error = 'Completa todos los campos';
+  return;
+
+}
+
   this.error = '';
 
   const { error } = await this.auth.login(this.email, this.password);
 
   if (error) {
-    this.error = 'Correo o contraseña incorrectos';
+
+    if (error.message.includes('Invalid login credentials')) {
+
+      this.error = 'Correo o contraseña incorrectos';
+
+    } 
+    
+    else if (error.message.includes('Email not confirmed')) {
+
+      this.error = 'Debes confirmar tu correo electrónico';
+
+    } 
+    
+    else {
+
+      this.error = 'Ocurrió un error inesperado';
+
+    }
+
     this.cdr.detectChanges();
     return;
   }

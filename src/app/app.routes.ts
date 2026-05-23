@@ -29,9 +29,4 @@ export const routes: Routes = [
     canActivate:[authGuard]
   },
 
-  // {
-  //   path: 'menu',
-  //   component: Menu,
-  //   canActivate: [authGuard]
-  // }
 ];
