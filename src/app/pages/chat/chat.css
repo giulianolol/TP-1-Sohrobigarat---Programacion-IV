@@ -1,0 +1,70 @@
+.chat-container {
+
+  max-width: 800px;
+
+  margin: auto;
+
+  padding: 20px;
+
+  color: white;
+}
+
+.mensajes {
+
+  height: 500px;
+
+  overflow-y: auto;
+
+  background: #111;
+
+  padding: 20px;
+
+  border-radius: 20px;
+
+  margin-bottom: 20px;
+}
+
+.mensaje {
+
+  background: #2a2a2a;
+
+  padding: 12px;
+
+  border-radius: 15px;
+
+  margin-bottom: 15px;
+
+  max-width: 70%;
+}
+
+.mio {
+
+  background: #0d6efd;
+
+  margin-left: auto;
+}
+
+.info {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  margin-bottom: 5px;
+
+  font-size: 0.8rem;
+
+  opacity: 0.8;
+}
+
+.texto {
+
+  font-size: 1rem;
+}
+
+.enviar-container {
+
+  display: flex;
+
+  gap: 10px;
+}

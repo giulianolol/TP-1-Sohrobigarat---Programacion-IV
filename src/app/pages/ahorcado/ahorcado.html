@@ -1,0 +1,54 @@
+<div class="container text-center mt-5">
+
+  <div class="card-ahorcado p-4">
+
+    <h1 class="mb-4">Juego del Ahorcado</h1>
+
+    <h2 class="palabra mb-4">
+
+      {{ palabraOculta.join(' ') }}
+
+    </h2>
+
+    <h4>
+      Intentos restantes: {{ intentos }}
+    </h4>
+
+    <div class="letras-container mt-4">
+
+      <button
+        *ngFor="let letra of abecedario"
+        class="btn btn-dark letra-btn"
+        [disabled]="letrasUsadas.includes(letra) || gano || perdio"
+        (click)="seleccionarLetra(letra)">
+
+        {{ letra }}
+
+      </button>
+
+    </div>
+
+    <div *ngIf="gano" class="alert alert-success mt-4">
+
+      ¡Ganaste!
+
+    </div>
+
+    <div *ngIf="perdio" class="alert alert-danger mt-4">
+
+      Perdiste. La palabra era:
+      <strong>{{ palabraSecreta }}</strong>
+
+    </div>
+
+    <button
+      class="btn btn-primary mt-4"
+      (click)="iniciarJuego()">
+
+      Jugar otra vez
+
+    </button>
+
+  </div>
+
+</div>

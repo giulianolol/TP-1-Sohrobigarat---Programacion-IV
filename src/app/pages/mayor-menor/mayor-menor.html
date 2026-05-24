@@ -1,0 +1,58 @@
+<div class="container text-center mt-5">
+
+  <div class="card-juego p-5">
+
+    <h1 class="mb-4">
+      Mayor o Menor
+    </h1>
+
+    <h3 class="mb-3">
+      Puntaje: {{ puntaje }}
+    </h3>
+
+    <div class="carta mb-5">
+
+      {{ obtenerCartaVisual(cartaActual) }}
+
+    </div>
+
+    <div *ngIf="!perdio">
+
+      <button
+        class="btn btn-success btn-lg m-3"
+        (click)="elegir('mayor')">
+
+        Mayor ↑
+
+      </button>
+
+      <button
+        class="btn btn-danger btn-lg m-3"
+        (click)="elegir('menor')">
+
+        Menor ↓
+
+      </button>
+
+    </div>
+
+    <div
+      *ngIf="perdio"
+      class="alert alert-danger mt-4">
+
+      Perdiste
+
+    </div>
+
+    <button
+      *ngIf="perdio"
+      class="btn btn-primary mt-4"
+      (click)="reiniciar()">
+
+      Jugar otra vez
+
+    </button>
+
+  </div>
+
+</div>

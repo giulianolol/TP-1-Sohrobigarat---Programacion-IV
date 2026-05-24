@@ -28,5 +28,21 @@ export const routes: Routes = [
     component: QuienSoy,
     canActivate:[authGuard]
   },
-
+  {
+    path: 'ahorcado',
+    loadComponent: () => import('./pages/ahorcado/ahorcado')
+    .then(m => m.AhorcadoComponent)
+  },
+  {
+  path: 'mayor-menor',
+  loadComponent: () =>
+    import('./pages/mayor-menor/mayor-menor')
+    .then(m => m.MayorMenorComponent)
+},
+{
+  path: 'chat',
+  loadComponent: () =>
+    import('./pages/chat/chat')
+    .then(m => m.ChatComponent)
+}
 ];

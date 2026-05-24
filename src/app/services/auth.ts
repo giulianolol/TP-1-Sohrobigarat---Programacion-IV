@@ -55,4 +55,12 @@ export class AuthService {
   async logout() {
     return await supabase.auth.signOut();
   }
+
+  async getUser() {
+
+  const { data } = await supabase.auth.getUser();
+
+  return data.user;
+
+}
 }

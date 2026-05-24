@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-// import { RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './home.html',
   styleUrls: ['./home.css'],
 })
@@ -16,7 +16,6 @@ export class Home {
 
   constructor(private auth: AuthService) {
     this.user$ = this.auth.user$;
-    console.log('Router test component loaded22222');
 
   }
 
