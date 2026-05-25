@@ -1,4 +1,4 @@
-# TP N°1 - Sala de Juegos 🎮
+# TP N°1 - Sala de Juegos 
 
 ## Alumno
 **Giuliano Manuel Sohrobigarat**
