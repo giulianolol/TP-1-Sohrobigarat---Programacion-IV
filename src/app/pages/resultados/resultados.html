@@ -1,0 +1,227 @@
+<div class="container-fluid resultados-container mt-5 mb-5">
+
+  <h1 class="titulo">
+    Resultados
+  </h1>
+
+  @if (cargando) {
+
+    <h3 class="text-white text-center mt-5">
+      Cargando resultados...
+    </h3>
+
+  }
+
+  @if (!cargando) {
+
+    <div class="resultados-grid">
+
+      <!-- AHORCADO -->
+
+      <div class="tabla-card">
+
+        <h2>
+          Ahorcado
+        </h2>
+
+        <table class="tabla">
+
+          <tr>
+
+            <th>Jugador</th>
+
+            <th>Puntaje</th>
+
+          </tr>
+
+          @for (
+            jugador of
+            (mostrarMasAhorcado
+              ? ahorcado
+              : ahorcado.slice(0,3));
+            track jugador.id
+          ) {
+
+            <tr>
+
+              <td>{{ jugador.usuario }}</td>
+
+              <td>{{ jugador.puntaje }}</td>
+
+            </tr>
+
+          }
+
+        </table>
+
+        <button
+          class="btn-mostrar"
+          (click)="toggleAhorcado()">
+
+          {{ mostrarMasAhorcado
+            ? 'Mostrar menos'
+            : 'Mostrar más' }}
+
+        </button>
+
+      </div>
+
+      <!-- MAYOR MENOR -->
+
+      <div class="tabla-card">
+
+        <h2>
+          Mayor o Menor
+        </h2>
+
+        <table class="tabla">
+
+          <tr>
+
+            <th>Jugador</th>
+
+            <th>Puntaje</th>
+
+          </tr>
+
+          @for (
+            jugador of
+            (mostrarMasMayorMenor
+              ? mayorMenor
+              : mayorMenor.slice(0,3));
+            track jugador.id
+          ) {
+
+            <tr>
+
+              <td>{{ jugador.usuario }}</td>
+
+              <td>{{ jugador.puntaje }}</td>
+
+            </tr>
+
+          }
+
+        </table>
+
+        <button
+          class="btn-mostrar"
+          (click)="toggleMayorMenor()">
+
+          {{ mostrarMasMayorMenor
+            ? 'Mostrar menos'
+            : 'Mostrar más' }}
+
+        </button>
+
+      </div>
+
+      <!-- PREGUNTADOS -->
+
+      <div class="tabla-card">
+
+        <h2>
+          Preguntados
+        </h2>
+
+        <table class="tabla">
+
+          <tr>
+
+            <th>Jugador</th>
+
+            <th>Puntaje</th>
+
+          </tr>
+
+          @for (
+            jugador of
+            (mostrarMasPreguntados
+              ? preguntados
+              : preguntados.slice(0,3));
+            track jugador.id
+          ) {
+
+            <tr>
+
+              <td>{{ jugador.usuario }}</td>
+
+              <td>{{ jugador.puntaje }}</td>
+
+            </tr>
+
+          }
+
+        </table>
+
+        <button
+          class="btn-mostrar"
+          (click)="togglePreguntados()">
+
+          {{ mostrarMasPreguntados
+            ? 'Mostrar menos'
+            : 'Mostrar más' }}
+
+        </button>
+
+      </div>
+
+      <!-- PULSO -->
+
+      <div class="tabla-card">
+
+        <h2>
+          Pulso Fantasma
+        </h2>
+
+        <table class="tabla">
+
+          <tr>
+
+            <th>Jugador</th>
+
+            <th>Puntaje</th>
+
+            <th>Promedio ms</th>
+
+          </tr>
+
+          @for (
+            jugador of
+            (mostrarMasPulso
+              ? pulsoFantasma
+              : pulsoFantasma.slice(0,3));
+            track jugador.id
+          ) {
+
+            <tr>
+
+              <td>{{ jugador.usuario }}</td>
+
+              <td>{{ jugador.puntaje }}</td>
+
+              <td>{{ jugador.promedio_ms }}</td>
+
+            </tr>
+
+          }
+
+        </table>
+
+        <button
+          class="btn-mostrar"
+          (click)="togglePulso()">
+
+          {{ mostrarMasPulso
+            ? 'Mostrar menos'
+            : 'Mostrar más' }}
+
+        </button>
+
+      </div>
+
+    </div>
+
+  }
+
+</div>

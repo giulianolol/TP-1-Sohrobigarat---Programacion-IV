@@ -1,0 +1,69 @@
+<div class="container text-center mt-5">
+
+  <div class="card-preguntados">
+
+    <h1>
+       Preguntados Rick & Morty
+    </h1>
+
+    <h3>
+      Puntaje: {{ puntaje }}
+    </h3>
+
+    @if (cargando) {
+
+      <h4>
+        Cargando...
+      </h4>
+
+    }
+
+    @if (!cargando && !perdio) {
+
+      <div class="imagen-container">
+
+        <img
+          [src]="personajeCorrecto.image"
+          class="personaje-img">
+
+      </div>
+
+      <div class="botones-container">
+
+        @for (personaje of personajes; track personaje.id) {
+
+          <button
+            class="btn-personaje"
+            (click)="responder(personaje.name)">
+
+            {{ personaje.name }}
+
+          </button>
+
+        }
+
+      </div>
+
+    }
+
+    @if (perdio) {
+
+      <div class="alert mt-4">
+
+        Perdiste :(
+
+      </div>
+
+      <button
+        class="btn-reiniciar mt-4"
+        (click)="reiniciar()">
+
+        Jugar otra vez
+
+      </button>
+
+    }
+
+  </div>
+
+</div>

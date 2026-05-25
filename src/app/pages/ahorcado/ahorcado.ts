@@ -10,7 +10,6 @@ import { supabase } from '../../services/auth';
   templateUrl: './ahorcado.html',
   styleUrls: ['./ahorcado.css']
 })
-
 export class AhorcadoComponent implements OnInit {
 
   palabras = [
@@ -28,99 +27,94 @@ export class AhorcadoComponent implements OnInit {
 
   palabraSecreta = '';
   palabraOculta: string[] = [];
-
   letrasUsadas: string[] = [];
 
   intentos = 6;
+  puntaje = 0;
 
   gano = false;
   perdio = false;
+  bloqueado = false;
 
   inicio!: number;
 
   constructor(private auth: AuthService) {}
 
   ngOnInit(): void {
-
-    this.iniciarJuego();
-
+    this.inicio = Date.now();
+    this.generarPalabra();
   }
 
-  iniciarJuego() {
-
+  generarPalabra() {
     const random = Math.floor(Math.random() * this.palabras.length);
 
     this.palabraSecreta = this.palabras[random];
-
     this.palabraOculta = Array(this.palabraSecreta.length).fill('_');
-
     this.letrasUsadas = [];
-
     this.intentos = 6;
 
     this.gano = false;
+    this.bloqueado = false;
     this.perdio = false;
-
-    this.inicio = Date.now();
   }
 
   seleccionarLetra(letra: string) {
-
+    if (this.perdio || this.bloqueado) return;
     if (this.letrasUsadas.includes(letra)) return;
-
-    if (this.gano || this.perdio) return;
 
     this.letrasUsadas.push(letra);
 
     let acerto = false;
 
     for (let i = 0; i < this.palabraSecreta.length; i++) {
-
       if (this.palabraSecreta[i] === letra) {
-
         this.palabraOculta[i] = letra;
-
         acerto = true;
       }
     }
 
     if (!acerto) {
-
       this.intentos--;
     }
 
+    // GANÓ
     if (!this.palabraOculta.includes('_')) {
-
+      this.puntaje++;
       this.gano = true;
+      this.bloqueado = true;
 
-      this.guardarPartida('Ganó');
+      setTimeout(() => {
+        this.generarPalabra();
+      }, 1000);
+
+      return;
     }
 
+    // PERDIÓ
     if (this.intentos <= 0) {
-
       this.perdio = true;
-
-      this.guardarPartida('Perdió');
+      this.bloqueado = true;
+      this.guardarPartida();
     }
   }
 
-  async guardarPartida(resultado: string) {
+  reiniciar() {
+    this.perdio = false;
+    this.gano = false;
+    this.bloqueado = false;
+    this.inicio = Date.now();
+    this.generarPalabra();
+  }
 
+  async guardarPartida() {
     const tiempo = Math.floor((Date.now() - this.inicio) / 1000);
-
     const user = await this.auth.getUser();
 
-    await supabase
-    .from('resultados_ahorcado')
-    .insert({
-
+    await supabase.from('resultados_ahorcado').insert({
       usuario: user?.email,
-      resultado: resultado,
-      palabra: this.palabraSecreta,
+      puntaje: this.puntaje,
       tiempo_segundos: tiempo,
-      letras_usadas: this.letrasUsadas.length,
       fecha: new Date()
-
     });
   }
 }

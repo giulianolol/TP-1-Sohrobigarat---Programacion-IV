@@ -4,10 +4,12 @@
 
     <h1 class="mb-4">Juego del Ahorcado</h1>
 
+    <h4 class="mb-3">
+      Puntaje: {{ puntaje }}
+    </h4>
+
     <h2 class="palabra mb-4">
-
       {{ palabraOculta.join(' ') }}
-
     </h2>
 
     <h4>
@@ -29,24 +31,18 @@
     </div>
 
     <div *ngIf="gano" class="alert alert-success mt-4">
-
       ¡Ganaste!
-
     </div>
 
     <div *ngIf="perdio" class="alert alert-danger mt-4">
-
       Perdiste. La palabra era:
       <strong>{{ palabraSecreta }}</strong>
-
     </div>
 
     <button
       class="btn btn-primary mt-4"
-      (click)="iniciarJuego()">
-
+      (click)="reiniciar()">
       Jugar otra vez
-
     </button>
 
   </div>

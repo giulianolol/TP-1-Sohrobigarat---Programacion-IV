@@ -1,0 +1,88 @@
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+
+  <div
+    class="card-fantasma"
+    [class.listo]="estado === 'listo'"
+    [class.perdio]="estado === 'perdio'">
+
+    <h1>
+       Pulso Fantasma
+    </h1>
+
+    <h3>
+      Ronda {{ ronda }}
+    </h3>
+
+    <div class="zona-juego">
+
+      <h2>
+        {{ mensaje }}
+      </h2>
+
+      @if (estado === 'esperando' || estado === 'listo') {
+
+        <button
+          class="btn-fantasma"
+          (click)="reaccionar()">
+
+          TOCAR
+
+        </button>
+
+      }
+ @if (estado === 'resultado') {
+
+        <div class="stats">
+
+          <p>
+            Tiempo: {{ tiempoReaccion }} ms
+          </p>
+
+          <p>
+            Promedio: {{ promedio }} ms
+          </p>
+
+          <p>
+            Puntaje: {{ puntaje }}
+          </p>
+
+        </div>
+
+        <button
+          class="btn-fantasma"
+          (click)="siguienteRonda()">
+
+          Siguiente ronda
+
+        </button>
+
+      }
+
+      @if (estado === 'perdio') {
+
+        <div class="stats">
+
+          <p>
+            Puntaje final: {{ puntaje }}
+          </p>
+
+          <p>
+            Promedio: {{ promedio }} ms
+          </p>
+                  </div>
+
+        <button
+          class="btn-fantasma"
+          (click)="reiniciar()">
+
+          Reintentar
+
+        </button>
+
+      }
+
+    </div>
+
+  </div>
+
+</div>

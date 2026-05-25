@@ -44,5 +44,23 @@ export const routes: Routes = [
   loadComponent: () =>
     import('./pages/chat/chat')
     .then(m => m.ChatComponent)
+},
+{
+  path: 'preguntados',
+  loadComponent: () =>
+    import('./pages/preguntados/preguntados')
+    .then(m => m.PreguntadosComponent)
+},
+{
+  path: 'pulso-fantasma',
+  loadComponent: () =>
+    import('./pages/pulso-fantasma/pulso-fantasma')
+    .then(m => m.PulsoFantasmaComponent)
+},
+{
+  path: 'resultados',
+  loadComponent: () =>
+    import('./pages/resultados/resultados')
+    .then(m => m.ResultadosComponent)
 }
 ];

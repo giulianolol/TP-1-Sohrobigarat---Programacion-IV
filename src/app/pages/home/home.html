@@ -1,103 +1,196 @@
-<div class="container text-center mt-5">
+<div class="home-container">
 
-  <h1> Sala de Juegos</h1>
+  <div class="overlay">
 
-  <p class="mb-5">
-    Inicia sesión para comenzar a jugar :)
-  </p>
+    <div class="container text-center pt-5">
 
-  <!-- LOGUEADO -->
+      <h1 class="titulo">
+        Sala de Juegos
+      </h1>
 
-  <ng-container *ngIf="user$ | async as user; else noLogueado">
+      <p class="subtitulo">
+        Inicia sesión para comenzar a jugar :)
+      </p>
 
-    <h3 class="mb-5">
+      <!-- LOGUEADO -->
 
-      Bienvenido
-      {{ $any(user).user_metadata?.nombre }}
-      {{ $any(user).user_metadata?.apellido }}
+      <ng-container *ngIf="user$ | async as user; else noLogueado">
 
-    </h3>
+        <h3 class="bienvenida">
 
-    <!-- CARD DEL JUEGO -->
+          Bienvenido
+          {{ $any(user).user_metadata?.nombre }}
+          {{ $any(user).user_metadata?.apellido }}
 
-    <div class="d-flex justify-content-center mb-5">
+        </h3>
 
-      <div
-        class="card bg-dark text-white shadow-lg p-5 rounded-4"
-        style="width: 400px;">
+        <div class="games-grid">
 
-        <h2 class="mb-3">
-          Ahorcado
+          <div class="game-card">
+
+          <div class="game-image ahorcado-img"></div>
+
+            <h2>
+              Ahorcado
+            </h2>
+
+            <p>
+              Descubrí la palabra antes de quedarte sin intentos.
+            </p>
+
+            <a
+              routerLink="/ahorcado"
+              class="game-btn">
+
+              Jugar
+
+            </a>
+
+          </div>
+
+          <div class="game-card">
+
+            <div class="game-image mayor-menor-img"></div>
+
+            <h2>
+              Mayor o Menor
+            </h2>
+
+            <p>
+              Adiviná si la próxima carta será mayor o menor.
+            </p>
+
+            <a
+              routerLink="/mayor-menor"
+              class="game-btn">
+
+              Jugar
+
+            </a>
+
+          </div>
+
+          <div class="game-card">
+
+            <div class="game-image chat-img"></div>
+
+            <h2>
+              Sala de Chat
+            </h2>
+
+            <p>
+              Habla con todos los jugadores en tiempo real.
+            </p>
+
+            <a
+              routerLink="/chat"
+              class="game-btn">
+
+              Entrar
+
+            </a>
+
+          </div>
+
+          <div class="game-card">
+
+            <div class="game-image preguntados-img"></div>
+
+            <h2>
+              Preguntados
+            </h2>
+
+            <p>
+              Adiviná personajes de Rick and Morty.
+            </p>
+
+            <a
+              routerLink="/preguntados"
+              class="game-btn">
+
+              Jugar
+
+            </a>
+
+          </div>
+
+          <div class="game-card">
+
+            <div class="game-image pulso-img"></div>
+
+            <h2>
+              Pulso Fantasma
+            </h2>
+
+            <p>
+              Medí tus reflejos y velocidad de reacción.
+            </p>
+
+            <a
+              routerLink="/pulso-fantasma"
+              class="game-btn">
+
+              Jugar
+
+            </a>
+
+          </div>
+
+      <div class="game-card">
+
+        <div class="game-image resultados-img"></div>
+
+        <h2>
+          Resultados
         </h2>
 
-        <p class="mb-4">
-          Descubrí la palabra antes de quedarte sin intentos.
+        <p>
+          Mira el ranking y desempeño de todos los jugadores.
         </p>
 
         <a
-          routerLink="/ahorcado"
-          class="btn btn-warning btn-lg"
-          style="
-            cursor: pointer;
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-          ">
+          routerLink="/resultados"
+          class="game-btn">
 
-          Jugar Ahorcado
+          Ver resultados
 
         </a>
-
-        <a
-          routerLink="/mayor-menor"
-          class="btn btn-warning btn-lg"
-          style="
-            cursor: pointer;
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-          ">
-
-          Jugar Mayor o Menor
-
-        </a>
-
-        <a
-        routerLink="/chat"
-        class="btn btn-success btn-lg">
-
-         Sala de Chat
-
-      </a>
 
       </div>
+        </div>
+
+        <div class="logout-container">
+
+          <button
+            (click)="logout()"
+            class="logout-btn">
+
+            Cerrar sesión
+
+          </button>
+
+        </div>
+
+      </ng-container>
+
+      <ng-template #noLogueado>
+
+        <div class="guest-box">
+
+          <h4>
+            Bienvenido invitado
+          </h4>
+
+          <p>
+            Por favor inicia sesión o regístrate para jugar
+          </p>
+
+        </div>
+
+      </ng-template>
 
     </div>
 
-    <div class="d-flex justify-content-end w-100 mt-5">
-
-      <button
-        (click)="logout()"
-        class="btn btn-danger px-4 py-2">
-
-        Cerrar sesión
-
-      </button>
-
-    </div>
-
-  </ng-container>
-
-  <!-- NO LOGUEADO -->
-
-  <ng-template #noLogueado>
-
-    <h4>Bienvenido invitado</h4>
-
-    <p>
-      Por favor inicia sesión o regístrate para jugar
-    </p>
-
-  </ng-template>
+  </div>
 
 </div>
