@@ -1,65 +1,69 @@
-<div class="container mt-5">
+<div class="registro-page">
 
-  <div class="card-register">
+  <div class="container mt-5">
 
-    <h2 class="mb-4">Registro</h2>
+    <div class="card-register">
 
-    <input
-      [(ngModel)]="nombre"
-      placeholder="Nombre"
-      class="form-control mb-3">
+      <h2 class="mb-4">Registro</h2>
 
-    <input
-      [(ngModel)]="apellido"
-      placeholder="Apellido"
-      class="form-control mb-3">
+      <input
+        [(ngModel)]="nombre"
+        placeholder="Nombre"
+        class="form-control mb-3">
 
-    <input
-      [(ngModel)]="edad"
-      type="number"
-      placeholder="Edad"
-      class="form-control mb-3">
+      <input
+        [(ngModel)]="apellido"
+        placeholder="Apellido"
+        class="form-control mb-3">
 
-    <input
-      [(ngModel)]="email"
-      type="email"
-      placeholder="Email"
-      class="form-control mb-3">
+      <input
+        [(ngModel)]="edad"
+        type="number"
+        placeholder="Edad"
+        class="form-control mb-3">
 
-    <input
-      [(ngModel)]="password"
-      type="password"
-      placeholder="Contraseña"
-      class="form-control mb-3">
+      <input
+        [(ngModel)]="email"
+        type="email"
+        placeholder="Email"
+        class="form-control mb-3">
 
-    <button
-      (click)="register()"
-      class="btn btn-success w-100"
-      [disabled]="loading">
+      <input
+        [(ngModel)]="password"
+        type="password"
+        placeholder="Contraseña"
+        class="form-control mb-3">
 
-      {{ loading ? 'Registrando...' : 'Registrarse' }}
+      <button
+        (click)="register()"
+        class="btn btn-success w-100"
+        [disabled]="loading">
 
-    </button>
+        {{ loading ? 'Registrando...' : 'Registrarse' }}
 
-    @if (error) {
+      </button>
 
-      <div class="alert alert-danger mt-3" role="alert">
+      @if (error) {
 
-        {{ error }}
+        <div class="alert alert-danger mt-3" role="alert">
 
-      </div>
+          {{ error }}
 
-    }
+        </div>
 
-    @if (success) {
+      }
 
-      <div class="alert alert-success mt-3" role="alert">
+      @if (success) {
 
-        {{ success }}
+        <div class="alert alert-success mt-3" role="alert">
 
-      </div>
+          {{ success }}
 
-    }
+        </div>
+
+      }
+
+    </div>
 
   </div>
 

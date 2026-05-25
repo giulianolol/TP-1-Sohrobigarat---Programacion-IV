@@ -2,14 +2,14 @@
 
   <div class="overlay">
 
-    <div class="container text-center pt-5">
+    <div class="home-content">
 
       <h1 class="titulo">
         Sala de Juegos
       </h1>
 
       <p class="subtitulo">
-        Inicia sesión para comenzar a jugar :)
+        Un portal místico donde cada juego revela tu destino.
       </p>
 
       <!-- LOGUEADO -->
@@ -26,9 +26,11 @@
 
         <div class="games-grid">
 
+          <!-- AHORCADO -->
+
           <div class="game-card">
 
-          <div class="game-image ahorcado-img"></div>
+            <div class="game-image ahorcado-img"></div>
 
             <h2>
               Ahorcado
@@ -47,6 +49,8 @@
             </a>
 
           </div>
+
+          <!-- MAYOR MENOR -->
 
           <div class="game-card">
 
@@ -70,6 +74,8 @@
 
           </div>
 
+          <!-- CHAT -->
+
           <div class="game-card">
 
             <div class="game-image chat-img"></div>
@@ -92,6 +98,8 @@
 
           </div>
 
+          <!-- PREGUNTADOS -->
+
           <div class="game-card">
 
             <div class="game-image preguntados-img"></div>
@@ -101,7 +109,7 @@
             </h2>
 
             <p>
-              Adiviná personajes de Rick and Morty.
+              Adiviná personajes del universo Rick and Morty.
             </p>
 
             <a
@@ -114,6 +122,8 @@
 
           </div>
 
+          <!-- PULSO -->
+
           <div class="game-card">
 
             <div class="game-image pulso-img"></div>
@@ -123,7 +133,7 @@
             </h2>
 
             <p>
-              Medí tus reflejos y velocidad de reacción.
+              Medí tus reflejos y velocidad espiritual.
             </p>
 
             <a
@@ -136,28 +146,33 @@
 
           </div>
 
-      <div class="game-card">
+          <!-- RESULTADOS -->
 
-        <div class="game-image resultados-img"></div>
+          <div class="game-card">
 
-        <h2>
-          Resultados
-        </h2>
+            <div class="game-image resultados-img"></div>
 
-        <p>
-          Mira el ranking y desempeño de todos los jugadores.
-        </p>
+            <h2>
+              Resultados
+            </h2>
 
-        <a
-          routerLink="/resultados"
-          class="game-btn">
+            <p>
+              Observá el ranking de todos los jugadores.
+            </p>
 
-          Ver resultados
+            <a
+              routerLink="/resultados"
+              class="game-btn">
 
-        </a>
+              Ver resultados
 
-      </div>
+            </a>
+
+          </div>
+
         </div>
+
+        <!-- LOGOUT -->
 
         <div class="logout-container">
 
@@ -173,6 +188,8 @@
 
       </ng-container>
 
+      <!-- INVITADO -->
+
       <ng-template #noLogueado>
 
         <div class="guest-box">
@@ -182,7 +199,7 @@
           </h4>
 
           <p>
-            Por favor inicia sesión o regístrate para jugar
+            Inicia sesión para acceder al portal.
           </p>
 
         </div>
