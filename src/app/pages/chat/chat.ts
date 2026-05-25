@@ -1,8 +1,21 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {
+
+  Component,
+
+  OnInit,
+
+  OnDestroy,
+
+  ChangeDetectorRef
+
+} from '@angular/core';
+
 import { CommonModule } from '@angular/common';
+
 import { FormsModule } from '@angular/forms';
 
 import { AuthService } from '../../services/auth';
+
 import { supabase } from '../../services/auth';
 
 @Component({
@@ -23,7 +36,13 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   canal: any;
 
-  constructor(private auth: AuthService) {}
+  constructor(
+
+    private auth: AuthService,
+
+    private cdr: ChangeDetectorRef
+
+  ) {}
 
   async ngOnInit() {
 
@@ -31,77 +50,87 @@ export class ChatComponent implements OnInit, OnDestroy {
 
     this.usuarioActual = user?.email || '';
 
-    this.cargarMensajes();
+    await this.cargarMensajes();
 
     this.suscribirseMensajes();
-
   }
 
   async cargarMensajes() {
 
     const { data } = await supabase
-    .from('mensajes')
-    .select('*')
-    .order('fecha', { ascending: true });
+
+      .from('mensajes')
+
+      .select('*')
+
+      .order('fecha', { ascending: true });
 
     this.mensajes = data || [];
 
+    this.cdr.detectChanges();
   }
 
   suscribirseMensajes() {
 
     this.canal = supabase
-    .channel('chat-global')
 
-    .on(
+      .channel('chat-global')
 
-      'postgres_changes',
+      .on(
 
-      {
-        event: 'INSERT',
-        schema: 'public',
-        table: 'mensajes'
-      },
+        'postgres_changes',
 
-      (payload) => {
+        {
 
-        this.mensajes.push(payload.new);
+          event: 'INSERT',
 
-      }
+          schema: 'public',
 
-    )
+          table: 'mensajes'
 
-    .subscribe();
+        },
 
+        (payload) => {
+
+          this.mensajes.push(payload.new);
+
+          this.cdr.detectChanges();
+        }
+
+      )
+
+      .subscribe();
   }
 
   async enviarMensaje() {
 
-    if (!this.nuevoMensaje.trim()) return;
+    if (!this.nuevoMensaje.trim())
+      return;
 
     await supabase
-    .from('mensajes')
-    .insert({
 
-      usuario: this.usuarioActual,
+      .from('mensajes')
 
-      mensaje: this.nuevoMensaje
+      .insert({
 
-    });
+        usuario: this.usuarioActual,
+
+        mensaje: this.nuevoMensaje,
+
+        fecha: new Date()
+
+      });
 
     this.nuevoMensaje = '';
-
   }
 
   esMio(usuario: string): boolean {
 
     return usuario === this.usuarioActual;
-
   }
 
   ngOnDestroy(): void {
 
     supabase.removeChannel(this.canal);
-
   }
 }
