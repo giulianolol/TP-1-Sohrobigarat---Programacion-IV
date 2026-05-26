@@ -1,68 +1,78 @@
-<div class="container text-center mt-5">
+<div class="preguntados-page">
 
-  <div class="card-preguntados">
+  <div class="preguntados-overlay">
 
-    <h1>
-       Preguntados Rick & Morty
-    </h1>
+    <div class="card-preguntados">
 
-    <h3>
-      Puntaje: {{ puntaje }}
-    </h3>
+      <h1 class="titulo-preguntados">
+        Preguntados Rick & Morty
+      </h1>
 
-    @if (cargando) {
+      <p class="subtitulo-preguntados">
+        Descifra al personaje correcto dentro del multiverso.
+      </p>
 
-      <h4>
-        Cargando...
-      </h4>
+      <h3 class="puntaje">
+        Puntaje: {{ puntaje }}
+      </h3>
 
-    }
+      @if (cargando) {
 
-    @if (!cargando && !perdio) {
+        <h4 class="cargando">
 
-      <div class="imagen-container">
+          Invocando personaje...
 
-        <img
-          [src]="personajeCorrecto.image"
-          class="personaje-img">
+        </h4>
 
-      </div>
+      }
 
-      <div class="botones-container">
+      @if (!cargando && !perdio) {
 
-        @for (personaje of personajes; track personaje.id) {
+        <div class="imagen-container">
 
-          <button
-            class="btn-personaje"
-            (click)="responder(personaje.name)">
+          <img
+            [src]="personajeCorrecto.image"
+            class="personaje-img">
 
-            {{ personaje.name }}
+        </div>
 
-          </button>
+        <div class="botones-container">
 
-        }
+          @for (personaje of personajes; track personaje.id) {
 
-      </div>
+            <button
+              class="btn-personaje"
+              (click)="responder(personaje.name)">
 
-    }
+              {{ personaje.name }}
 
-    @if (perdio) {
+            </button>
 
-      <div class="alert mt-4">
+          }
 
-        Perdiste :(
+        </div>
 
-      </div>
+      }
 
-      <button
-        class="btn-reiniciar mt-4"
-        (click)="reiniciar()">
+      @if (perdio) {
 
-        Jugar otra vez
+        <div class="alert-perdio mt-4">
 
-      </button>
+          🔮 El portal se ha cerrado... Perdiste.
 
-    }
+        </div>
+
+        <button
+          class="btn-reiniciar mt-4"
+          (click)="reiniciar()">
+
+          Jugar otra vez
+
+        </button>
+
+      }
+
+    </div>
 
   </div>
 

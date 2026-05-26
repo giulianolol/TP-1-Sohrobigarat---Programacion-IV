@@ -1,64 +1,68 @@
-<div class="container text-center mt-5">
+<div class="mayor-menor-bg">
 
-  <div class="card-juego">
+  <div class="container text-center pt-5">
 
-    <h1>
-      Mayor o Menor
-    </h1>
+    <div class="card-juego">
 
-    <h3>
-      Puntaje: {{ puntaje }}
-    </h3>
+      <h1>
+        Mayor o Menor
+      </h1>
 
-    <div class="carta">
+      <h3>
+        Puntaje: {{ puntaje }}
+      </h3>
 
-      <img
-        [src]="obtenerCartaVisual(cartaActual)"
-        class="carta-tarot">
+      <div class="carta">
+
+        <img
+          [src]="obtenerCartaVisual(cartaActual)"
+          class="carta-tarot">
+
+      </div>
+
+      @if (!perdio) {
+
+        <div class="botones">
+
+          <button
+            class="btn-tarot"
+            (click)="elegir('mayor')">
+
+            Mayor ↑
+
+          </button>
+
+          <button
+            class="btn-tarot"
+            (click)="elegir('menor')">
+
+            Menor ↓
+
+          </button>
+
+        </div>
+
+      }
+
+      @if (perdio) {
+
+        <div class="alert alert-danger mt-4">
+
+          Perdiste
+
+        </div>
+
+        <button
+          class="btn-tarot mt-3"
+          (click)="reiniciar()">
+
+          Jugar otra vez
+
+        </button>
+
+      }
 
     </div>
-
-    @if (!perdio) {
-
-      <div class="botones">
-
-        <button
-          class="btn-tarot"
-          (click)="elegir('mayor')">
-
-          Mayor ↑
-
-        </button>
-
-        <button
-          class="btn-tarot"
-          (click)="elegir('menor')">
-
-          Menor ↓
-
-        </button>
-
-      </div>
-
-    }
-
-    @if (perdio) {
-
-      <div class="alert alert-danger mt-4">
-
-        Perdiste
-
-      </div>
-
-      <button
-        class="btn-tarot mt-3"
-        (click)="reiniciar()">
-
-        Jugar otra vez
-
-      </button>
-
-    }
 
   </div>
 

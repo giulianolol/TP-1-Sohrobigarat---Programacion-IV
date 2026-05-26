@@ -27,7 +27,7 @@ export class Home implements OnInit {
 
   ngOnInit(): void {
 
-    this.audio.volume = 0.15;
+    this.audio.volume = 0.03;
 
     this.audio.loop = false;
 
@@ -44,6 +44,5 @@ export class Home implements OnInit {
     this.auth.logout();
   }
 
-  
 }
 

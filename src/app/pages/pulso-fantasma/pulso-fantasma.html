@@ -1,85 +1,95 @@
-<div class="container d-flex justify-content-center align-items-center min-vh-100">
+<div class="fantasma-page">
 
-  <div
-    class="card-fantasma"
-    [class.listo]="estado === 'listo'"
-    [class.perdio]="estado === 'perdio'">
+  <div class="fantasma-overlay">
 
-    <h1>
+    <div
+      class="card-fantasma"
+      [class.listo]="estado === 'listo'"
+      [class.perdio]="estado === 'perdio'">
+
+      <h1 class="titulo-fantasma">
        Pulso Fantasma
-    </h1>
+      </h1>
 
-    <h3>
-      Ronda {{ ronda }}
-    </h3>
+      <p class="subtitulo-fantasma">
+        Escucha el llamado del portal y reacciona antes de que desaparezca.
+      </p>
 
-    <div class="zona-juego">
+      <h3 class="ronda">
+        Ronda {{ ronda }}
+      </h3>
 
-      <h2>
-        {{ mensaje }}
-      </h2>
+      <div class="zona-juego">
 
-      @if (estado === 'esperando' || estado === 'listo') {
+        <h2 class="mensaje">
+          {{ mensaje }}
+        </h2>
 
-        <button
-          class="btn-fantasma"
-          (click)="reaccionar()">
+        @if (estado === 'esperando' || estado === 'listo') {
 
-          TOCAR
+          <button
+            class="btn-fantasma"
+            (click)="reaccionar()">
 
-        </button>
+            TOCAR
 
-      }
- @if (estado === 'resultado') {
+          </button>
 
-        <div class="stats">
+        }
 
-          <p>
-            Tiempo: {{ tiempoReaccion }} ms
-          </p>
+        @if (estado === 'resultado') {
 
-          <p>
-            Promedio: {{ promedio }} ms
-          </p>
+          <div class="stats">
 
-          <p>
-            Puntaje: {{ puntaje }}
-          </p>
+            <p>
+               Tiempo: {{ tiempoReaccion }} ms
+            </p>
 
-        </div>
+            <p>
+               Promedio: {{ promedio }} ms
+            </p>
 
-        <button
-          class="btn-fantasma"
-          (click)="siguienteRonda()">
+            <p>
+               Puntaje: {{ puntaje }}
+            </p>
 
-          Siguiente ronda
+          </div>
 
-        </button>
+          <button
+            class="btn-fantasma"
+            (click)="siguienteRonda()">
 
-      }
+            Siguiente ronda
 
-      @if (estado === 'perdio') {
+          </button>
 
-        <div class="stats">
+        }
 
-          <p>
-            Puntaje final: {{ puntaje }}
-          </p>
+        @if (estado === 'perdio') {
 
-          <p>
-            Promedio: {{ promedio }} ms
-          </p>
-                  </div>
+          <div class="stats">
 
-        <button
-          class="btn-fantasma"
-          (click)="reiniciar()">
+            <p>
+               Puntaje final: {{ puntaje }}
+            </p>
 
-          Reintentar
+            <p>
+               Promedio: {{ promedio }} ms
+            </p>
 
-        </button>
+          </div>
 
-      }
+          <button
+            class="btn-fantasma"
+            (click)="reiniciar()">
+
+            Reintentar
+
+          </button>
+
+        }
+
+      </div>
 
     </div>
 

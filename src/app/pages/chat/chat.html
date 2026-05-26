@@ -1,55 +1,67 @@
-<div class="chat-container">
+<div class="chat-page">
 
-  <h1 class="text-center mb-4">
-    Sala de Chat
-  </h1>
+  <div class="chat-overlay">
 
-  <div class="mensajes">
+    <div class="chat-container">
 
-    @for (msg of mensajes; track msg.id) {
+      <h1 class="titulo-chat">
+        Sala de Chat
+      </h1>
 
-      <div
-        class="mensaje"
-        [class.mio]="esMio(msg.usuario)">
+      <p class="subtitulo-chat">
+        Conversa con las almas del portal místico.
+      </p>
 
-        <div class="info">
+      <div class="mensajes">
 
-          <strong>
-            {{ msg.usuario }}
-          </strong>
+        @for (msg of mensajes; track msg.id) {
 
-          <span>
-            {{ msg.fecha | date:'HH:mm' }}
-          </span>
+          <div
+            class="mensaje"
+            [class.mio]="esMio(msg.usuario)">
 
-        </div>
+            <div class="info">
 
-        <div class="texto">
+              <strong>
+                {{ msg.usuario }}
+              </strong>
 
-          {{ msg.mensaje }}
+              <span>
+                {{ msg.fecha | date:'HH:mm' }}
+              </span>
 
-        </div>
+            </div>
+
+            <div class="texto">
+
+              {{ msg.mensaje }}
+
+            </div>
+
+          </div>
+
+        }
 
       </div>
 
-    }
+      <div class="enviar-container">
 
-  </div>
+        <input
+          [(ngModel)]="nuevoMensaje"
+          placeholder="Escribe un mensaje..."
+          class="input-chat">
 
-  <div class="enviar-container">
+        <button
+          (click)="enviarMensaje()"
+          class="btn-chat">
 
-    <input
-      [(ngModel)]="nuevoMensaje"
-      placeholder="Escribe un mensaje..."
-      class="form-control">
+          Enviar
 
-    <button
-      (click)="enviarMensaje()"
-      class="btn btn-primary">
+        </button>
 
-      Enviar
+      </div>
 
-    </button>
+    </div>
 
   </div>
 

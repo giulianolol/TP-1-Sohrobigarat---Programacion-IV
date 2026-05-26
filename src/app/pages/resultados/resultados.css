@@ -1,6 +1,36 @@
-body {
+.resultados-page {
 
-  background: #0f0f0f;
+  min-height: 100vh;
+
+  background-image: url('/assets/wallpapergeneral.jpg');
+
+  background-size: cover;
+
+  background-position: center;
+
+  background-repeat: no-repeat;
+}
+
+.resultados-overlay {
+
+  min-height: 100vh;
+
+  background:
+    linear-gradient(
+      rgba(0,0,0,0.72),
+      rgba(0,0,0,0.82)
+    );
+
+  backdrop-filter: blur(4px);
+
+  padding: 50px 30px;
+}
+
+.resultados-container {
+
+  max-width: 1600px;
+
+  margin: auto;
 }
 
 .titulo {
@@ -9,11 +39,39 @@ body {
 
   text-align: center;
 
-  margin-bottom: 50px;
+  margin-bottom: 18px;
 
-  font-size: 3rem;
+  font-size: 4rem;
 
-  font-weight: 700;
+  font-weight: 800;
+
+  letter-spacing: 2px;
+
+  text-shadow:
+    0 0 25px rgba(255,255,255,0.12);
+}
+
+.subtitulo {
+
+  text-align: center;
+
+  color:
+    rgba(255,255,255,0.72);
+
+  font-size: 1.2rem;
+
+  margin-bottom: 70px;
+
+  line-height: 1.7;
+}
+
+.cargando-texto {
+
+  color: white;
+
+  text-align: center;
+
+  margin-top: 80px;
 }
 
 /* GRID */
@@ -26,37 +84,54 @@ body {
 
   justify-content: center;
 
-  gap: 30px;
+  gap: 35px;
 
   width: 100%;
 }
 
+/* CARDS */
 
 .tabla-card {
 
-  width: 500px;
+  width: 520px;
 
-  background: rgba(255,255,255,0.05);
+  background:
+    rgba(255,255,255,0.05);
 
-  border: 1px solid rgba(255,255,255,0.08);
+  border:
+    1px solid rgba(255,255,255,0.08);
 
-  border-radius: 24px;
+  border-radius: 28px;
 
-  padding: 30px;
+  padding: 35px;
 
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
 
   box-shadow:
-    0 8px 25px rgba(0,0,0,0.25);
+    0 10px 35px rgba(0,0,0,0.35);
+
+  transition: all 0.3s ease;
+}
+
+.tabla-card:hover {
+
+  transform: translateY(-3px);
+
+  background:
+    rgba(255,255,255,0.06);
 }
 
 .tabla-card h2 {
 
   color: white;
 
-  margin-bottom: 25px;
+  margin-bottom: 28px;
 
   text-align: center;
+
+  font-size: 2rem;
+
+  font-weight: 700;
 }
 
 /* TABLAS */
@@ -68,74 +143,112 @@ body {
   border-collapse: collapse;
 
   color: white;
+
+  overflow: hidden;
+
+  border-radius: 18px;
 }
 
 .tabla th {
 
-  background: rgba(255,255,255,0.08);
+  background:
+    rgba(255,255,255,0.10);
 
-  padding: 15px;
+  padding: 16px;
 
   text-align: center;
+
+  font-size: 1rem;
+
+  font-weight: 700;
 }
 
 .tabla td {
 
-  padding: 14px;
+  padding: 16px;
 
   text-align: center;
 
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  border-bottom:
+    1px solid rgba(255,255,255,0.06);
+
+  font-size: 0.95rem;
 }
 
 .tabla tr:hover {
 
-  background: rgba(255,255,255,0.04);
+  background:
+    rgba(255,255,255,0.04);
 }
 
 /* BOTON */
 
 .btn-mostrar {
 
-  margin-top: 20px;
+  margin-top: 24px;
 
   width: 100%;
 
   border: none;
 
-  padding: 14px;
+  padding: 15px;
 
-  border-radius: 14px;
+  border-radius: 16px;
 
-  background: rgba(255,255,255,0.08);
+  background:
+    rgba(255,255,255,0.08);
 
   color: white;
 
   font-weight: bold;
+
+  font-size: 1rem;
 
   transition: all 0.25s ease;
 }
 
 .btn-mostrar:hover {
 
-  background: rgba(255,255,255,0.16);
+  background:
+    rgba(255,255,255,0.16);
+
+  transform: translateY(-2px);
 
   cursor: pointer;
 }
 
-.resultados-container {
+/* RESPONSIVE */
 
-  max-width: 1400px;
+@media (max-width: 1200px) {
 
-  margin: auto;
+  .tabla-card {
+
+    width: 100%;
+  }
 }
 
+@media (max-width: 768px) {
 
+  .titulo {
 
-@media (max-width: 900px) {
+    font-size: 2.8rem;
+  }
 
-  .resultados-grid {
+  .subtitulo {
 
-    grid-template-columns: 1fr;
+    font-size: 1rem;
+  }
+
+  .tabla-card {
+
+    padding: 25px;
+  }
+
+  .tabla th,
+  .tabla td {
+
+    font-size: 0.85rem;
+
+    padding: 12px;
   }
 }
