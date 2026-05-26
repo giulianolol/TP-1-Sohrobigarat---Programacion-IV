@@ -30,6 +30,49 @@ export class Registro {
     private cdr: ChangeDetectorRef
   ) {}
 
+  camposTocados = {
+
+  nombre: false,
+  apellido: false,
+  edad: false,
+  email: false,
+  password: false
+
+};
+
+tocarCampo(campo: string) {
+
+  this.camposTocados[campo as keyof typeof this.camposTocados] = true;
+
+}
+
+emailValido(): boolean {
+
+  return this.email.includes('@');
+
+}
+
+passwordValida(): boolean {
+
+  return this.password.length >= 6;
+
+}
+
+formularioValido(): boolean {
+
+  return (
+
+    this.nombre.trim() !== '' &&
+    this.apellido.trim() !== '' &&
+    this.edad !== null &&
+    this.edad > 0 &&
+    this.emailValido() &&
+    this.passwordValida()
+
+  );
+
+}
+
   async register() {
 
     if (this.loading) return;

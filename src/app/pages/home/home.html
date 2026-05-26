@@ -120,61 +120,87 @@
 
           </div>
 
-          <!-- PULSO -->
+          <!-- ENCUESTA -->
 
+          
+          <!-- Pong Arcano -->
+          
           <div class="game-card">
-
+            
             <div class="game-image pulso-img"></div>
-
+            
             <h2>
-              Pulso Fantasma
+              Pong Arcano
             </h2>
-
+            
             <p>
-              Medí tus reflejos y velocidad espiritual.
+              Medí tus reflejos.
             </p>
-
+            
             <a
-              routerLink="/pulso-fantasma"
-              class="game-btn">
-
-              Jugar
-
-            </a>
-
-          </div>
-
-          <!-- RESULTADOS -->
-
-          <div class="game-card">
-
-            <div class="game-image resultados-img"></div>
-
-            <h2>
-              Resultados
-            </h2>
-
-            <p>
-              Observá el ranking de todos los jugadores.
-            </p>
-
-            <a
-              routerLink="/resultados"
-              class="game-btn">
-
-              Ver resultados
-
-            </a>
-
-          </div>
-
+            routerLink="/pong"
+            class="game-btn">
+            
+            Jugar
+            
+          </a>
+          
         </div>
 
-        <!-- LOGOUT -->
+            <div class="game-card">
 
-        <div class="logout-container">
+      <div class="game-image encuesta-img"></div>
 
-          <button
+      <h2>
+        Encuesta
+      </h2>
+
+      <p>
+        Compartí tu experiencia y ayudanos a mejorar el portal.
+      </p>
+
+      <a
+        routerLink="/encuesta"
+        class="game-btn">
+
+        Responder
+
+      </a>
+
+    </div>
+        
+        <!-- RESULTADOS -->
+        
+        <div class="game-card">
+          
+          <div class="game-image resultados-img"></div>
+          
+          <h2>
+            Resultados
+          </h2>
+          
+          <p>
+            Observá el ranking de todos los jugadores.
+          </p>
+          
+          <a
+          routerLink="/resultados"
+          class="game-btn">
+          
+          Ver resultados
+          
+        </a>
+        
+      </div>
+      
+    </div>
+
+    
+    <!-- LOGOUT -->
+    
+    <div class="logout-container">
+      
+      <button
             (click)="logout()"
             class="logout-btn">
 

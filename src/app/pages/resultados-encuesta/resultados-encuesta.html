@@ -1,0 +1,31 @@
+<div class="container">
+
+  <h2>Resultados de Encuestas</h2>
+
+  <div class="encuestas-grid">
+
+    @for (e of encuestas; track e.id) {
+
+      <div class="card">
+
+        <h5>{{ e.nombre }} {{ e.apellido }}</h5>
+
+        <p><strong>Edad:</strong> {{ e.edad }}</p>
+
+        <p><strong>Teléfono:</strong> {{ e.telefono }}</p>
+
+        <p><strong>Juego favorito:</strong> {{ e.juego_favorito }}</p>
+
+        <p><strong>Aspecto favorito:</strong> {{ e.aspecto_favorito }}</p>
+
+        <p><strong>¿Recomendaría?:</strong> {{ e.recomendaria }}</p>
+
+        <p><strong>Sugerencia:</strong> {{ e.sugerencia }}</p>
+
+      </div>
+
+    }
+
+  </div>
+
+</div>

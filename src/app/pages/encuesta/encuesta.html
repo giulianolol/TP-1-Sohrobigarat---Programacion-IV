@@ -1,0 +1,153 @@
+<div class="encuesta-container">
+
+  <h2>Encuesta</h2>
+
+  <form
+    [formGroup]="encuestaForm"
+    (ngSubmit)="enviarEncuesta()">
+
+    <input
+      formControlName="nombre"
+      placeholder="Nombre"
+      class="form-control mb-2">
+
+    <input
+      formControlName="apellido"
+      placeholder="Apellido"
+      class="form-control mb-2">
+
+    <input
+      formControlName="edad"
+      type="number"
+      placeholder="Edad"
+      class="form-control mb-1">
+
+    @if (
+      encuestaForm.get('edad')?.invalid &&
+      encuestaForm.get('edad')?.touched
+    ) {
+      <small class="text-danger">
+        Edad entre 18 y 99 años
+      </small>
+    }
+
+    <input
+      formControlName="telefono"
+      placeholder="Teléfono"
+      class="form-control mb-1">
+
+    @if (
+      encuestaForm.get('telefono')?.invalid &&
+      encuestaForm.get('telefono')?.touched
+    ) {
+      <small class="text-danger">
+        Solo números, máximo 10 caracteres
+      </small>
+    }
+
+    <hr>
+
+    <h5>¿Cuál es tu juego favorito?</h5>
+
+    <div class="form-check">
+      <input
+        type="radio"
+        value="Mayor o Menor"
+        formControlName="juegoFavorito">
+      Mayor o Menor
+    </div>
+
+    <div class="form-check">
+      <input
+        type="radio"
+        value="Ahorcado"
+        formControlName="juegoFavorito">
+      Ahorcado
+    </div>
+
+    <div class="form-check mb-3">
+      <input
+        type="radio"
+        value="Pong Arcano"
+        formControlName="juegoFavorito">
+      Pong Arcano
+    </div>
+
+    <h5>¿Qué valorás más?</h5>
+
+    <select
+      formControlName="aspectos"
+      class="form-select mb-3">
+
+      <option value="">
+        Seleccionar
+      </option>
+
+      <option value="Diseño">
+        Diseño
+      </option>
+
+      <option value="Dificultad">
+        Dificultad
+      </option>
+
+      <option value="Velocidad">
+        Velocidad
+      </option>
+
+    </select>
+
+    <h5>¿Recomendarías la sala?</h5>
+
+    <div class="form-check">
+      <input
+        type="radio"
+        value="Sí"
+        formControlName="recomendaria">
+      Sí, la recomendaría
+    </div>
+
+    <div class="form-check mb-3">
+      <input
+        type="radio"
+        value="No"
+        formControlName="recomendaria">
+      No la recomendaría
+    </div>
+
+    <h5 class="mt-3">
+      Sugerencias
+    </h5>
+
+    <textarea
+      formControlName="sugerencia"
+      rows="4"
+      class="form-control mb-3">
+    </textarea>
+
+    <button
+      type="submit"
+      class="btn btn-primary w-100"
+      [disabled]="loading">
+
+      {{ loading
+        ? 'Enviando encuesta...'
+        : 'Enviar encuesta' }}
+
+    </button>
+
+    @if (error) {
+      <p class="text-danger mt-3">
+        {{ error }}
+      </p>
+    }
+
+    @if (success) {
+      <p class="text-success mt-3">
+        {{ success }}
+      </p>
+    }
+
+  </form>
+
+</div>

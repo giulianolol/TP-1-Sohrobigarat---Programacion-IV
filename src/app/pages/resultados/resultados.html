@@ -35,11 +35,8 @@
             <table class="tabla">
 
               <tr>
-
                 <th>Jugador</th>
-
                 <th>Puntaje</th>
-
               </tr>
 
               @for (
@@ -51,11 +48,8 @@
               ) {
 
                 <tr>
-
                   <td>{{ jugador.usuario }}</td>
-
                   <td>{{ jugador.puntaje }}</td>
-
                 </tr>
 
               }
@@ -85,11 +79,8 @@
             <table class="tabla">
 
               <tr>
-
                 <th>Jugador</th>
-
                 <th>Puntaje</th>
-
               </tr>
 
               @for (
@@ -101,11 +92,8 @@
               ) {
 
                 <tr>
-
                   <td>{{ jugador.usuario }}</td>
-
                   <td>{{ jugador.puntaje }}</td>
-
                 </tr>
 
               }
@@ -129,17 +117,14 @@
           <div class="tabla-card">
 
             <h2>
-             Preguntados
+              Preguntados
             </h2>
 
             <table class="tabla">
 
               <tr>
-
                 <th>Jugador</th>
-
                 <th>Puntaje</th>
-
               </tr>
 
               @for (
@@ -151,11 +136,8 @@
               ) {
 
                 <tr>
-
                   <td>{{ jugador.usuario }}</td>
-
                   <td>{{ jugador.puntaje }}</td>
-
                 </tr>
 
               }
@@ -176,57 +158,55 @@
 
           <!-- PULSO -->
 
-          <div class="tabla-card">
+<!-- PONG -->
 
-            <h2>
-               Pulso Fantasma
-            </h2>
+<div class="tabla-card">
 
-            <table class="tabla">
+  <h2>
+    Pong Arcano
+  </h2>
 
-              <tr>
+  <table class="tabla">
 
-                <th>Jugador</th>
+    <tr>
 
-                <th>Puntaje</th>
+      <th>Jugador</th>
 
-                <th>Promedio</th>
+      <th>Puntaje</th>
 
-              </tr>
+    </tr>
 
-              @for (
-                jugador of
-                (mostrarMasPulso
-                  ? pulsoFantasma
-                  : pulsoFantasma.slice(0,3));
-                track jugador.id
-              ) {
+    @for (
+      jugador of
+      (mostrarMasPong
+        ? pong
+        : pong.slice(0,3));
+      track jugador.id
+    ) {
 
-                <tr>
+      <tr>
 
-                  <td>{{ jugador.usuario }}</td>
+        <td>{{ jugador.usuario }}</td>
 
-                  <td>{{ jugador.puntaje }}</td>
+        <td>{{ jugador.puntaje }}</td>
 
-                  <td>{{ jugador.promedio_ms }} ms</td>
+      </tr>
 
-                </tr>
+    }
 
-              }
+  </table>
 
-            </table>
+  <button
+    class="btn-mostrar"
+    (click)="togglePong()">
 
-            <button
-              class="btn-mostrar"
-              (click)="togglePulso()">
+    {{ mostrarMasPong
+      ? 'Mostrar menos'
+      : 'Mostrar más' }}
 
-              {{ mostrarMasPulso
-                ? 'Mostrar menos'
-                : 'Mostrar más' }}
+  </button>
 
-            </button>
-
-          </div>
+</div>
 
         </div>
 

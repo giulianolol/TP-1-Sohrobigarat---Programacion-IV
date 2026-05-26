@@ -1,0 +1,109 @@
+<div class="pong-container">
+
+  <h1>Pong Arcano</h1>
+
+  <p>Puntaje: {{ puntaje }}</p>
+
+  <canvas
+    #canvas
+    width="900"
+    height="550">
+  </canvas>
+
+  @if (gameOver) {
+
+  <div class="game-over-overlay">
+
+    <div class="game-over-card">
+
+      <h2>Fin del juego</h2>
+
+      <p class="puntaje-final">
+        Tu puntaje fue:
+      </p>
+
+      <h1>
+        {{ puntaje }}
+      </h1>
+
+      <button
+        (click)="reiniciar()">
+
+        Jugar otra vez
+
+      </button>
+
+    </div>
+
+  </div>
+
+}
+
+@if (mostrarRuleta) {
+
+  <div class="ruleta-overlay">
+
+    <div class="ruleta-card">
+
+      <h2>
+        Ruleta Arcana
+      </h2>
+
+      @if (!resultadoRuleta) {
+
+        <p>
+          Elegí un color.
+          Si acertás duplicás
+          tu puntaje.
+          Si fallás se divide.
+        </p>
+
+        <div class="ruleta-botones">
+
+          <button
+            class="btn-rojo"
+            (click)="elegirColor('rojo')">
+
+            Rojo
+
+          </button>
+
+          <button
+            class="btn-negro"
+            (click)="elegirColor('negro')">
+
+            Negro
+
+          </button>
+
+        </div>
+
+      }
+
+      @if (resultadoRuleta) {
+
+        <h3>
+          Salió:
+          {{ resultadoRuleta }}
+          {{ numeroRuleta }}
+        </h3>
+
+        <p class="mensaje-ruleta">
+          {{ mensajeRuleta }}
+        </p>
+
+        <p>
+          El juego se reanuda en...
+
+          {{ contadorReinicio }}
+        </p>
+
+      }
+
+    </div>
+
+  </div>
+
+}
+
+</div>

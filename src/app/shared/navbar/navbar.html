@@ -5,6 +5,21 @@
     <a routerLink="/" class="nav-btn me-2">
       Home
     </a>
+    
+    @if (user$ | async; as user) {
+    @if (auth.isAdmin(user)) {
+
+      <a
+        routerLink="/resultados-encuesta"
+        routerLinkActive="active-link"
+        class="nav-btn me-2">
+
+        Admin
+
+      </a>
+
+    }
+  }
 
     @if (!(user$ | async)) {
 

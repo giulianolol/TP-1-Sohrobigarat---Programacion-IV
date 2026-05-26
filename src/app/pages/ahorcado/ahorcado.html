@@ -12,13 +12,34 @@
         Puntaje: {{ puntaje }}
       </h4>
 
+      <!-- IMAGEN AHORCADO -->
+
+      <div class="ahorcado-img-container">
+
+        <img
+          [src]="imagenAhorcado"
+          class="ahorcado-img">
+
+      </div>
+
+      <!-- PALABRA -->
+
       <h2 class="palabra mb-4">
+
         {{ palabraOculta.join(' ') }}
+
       </h2>
 
-      <h4>
-        Intentos restantes: {{ intentos }}
+      <!-- INTENTOS -->
+
+      <h4 class="mb-4">
+
+        Intentos restantes:
+        {{ intentos }}
+
       </h4>
+
+      <!-- LETRAS -->
 
       <div class="letras-container mt-4">
 
@@ -26,7 +47,11 @@
 
           <button
             class="btn btn-dark letra-btn"
-            [disabled]="letrasUsadas.includes(letra) || gano || perdio"
+            [disabled]="
+              letrasUsadas.includes(letra)
+              || gano
+              || perdio
+            "
             (click)="seleccionarLetra(letra)">
 
             {{ letra }}
@@ -37,32 +62,42 @@
 
       </div>
 
+      <!-- GANÓ -->
+
       @if (gano) {
 
         <div class="alert alert-success mt-4">
 
-          ¡Ganaste!
+          🔮 ¡Ganaste!
 
         </div>
 
       }
+
+      <!-- PERDIÓ -->
 
       @if (perdio) {
 
         <div class="alert alert-danger mt-4">
 
-          Perdiste. La palabra era:
-          <strong>{{ palabraSecreta }}</strong>
+          ☠️ Perdiste.
+          La palabra era:
+
+          <strong>
+            {{ palabraSecreta }}
+          </strong>
 
         </div>
 
       }
 
+      <!-- REINICIAR -->
+
       <button
         class="btn btn-primary mt-4"
         (click)="reiniciar()">
 
-        Jugar otra vez
+        Siguiente
 
       </button>
 

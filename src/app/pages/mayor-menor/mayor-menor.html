@@ -12,15 +12,81 @@
         Puntaje: {{ puntaje }}
       </h3>
 
-      <div class="carta">
+      <!-- VIDAS -->
 
-        <img
-          [src]="obtenerCartaVisual(cartaActual)"
-          class="carta-tarot">
+      <div class="vidas-container">
+
+        @for (vida of [1,2,3]; track vida) {
+
+          <span
+            class="vida"
+            [class.perdida]="vida > vidas">
+
+            ♥
+            
+          </span>
+
+        }
 
       </div>
 
-      @if (!perdio) {
+      <!-- CARTAS -->
+
+      <div class="cartas-container">
+
+        <!-- CARTA ACTUAL -->
+
+        <div class="carta-tarot">
+
+          <div class="valor">
+
+            {{ obtenerValorCarta(cartaActual.valor) }}
+
+          </div>
+
+          <div class="palo">
+
+            {{ cartaActual.palo }}
+
+          </div>
+
+        </div>
+
+        <!-- CARTA OCULTA / REVELADA -->
+
+        <div class="carta-tarot reverso">
+
+          @if (mostrarResultado && cartaRevelada) {
+
+            <div class="valor">
+
+              {{ obtenerValorCarta(cartaRevelada.valor) }}
+
+            </div>
+
+            <div class="palo">
+
+              {{ cartaRevelada.palo }}
+
+            </div>
+
+          }
+
+          @else {
+
+            <img
+              src="/assets/cartas/reverso.png"
+              class="reverso-img">
+
+          }
+
+        </div>
+
+      </div>
+
+      <!-- BOTONES MAYOR MENOR -->
+
+      @if (!perdio && !mostrarResultado) {
 
         <div class="botones">
 
@@ -44,23 +110,117 @@
 
       }
 
-      @if (perdio) {
+      <!-- RESULTADO -->
 
-        <div class="alert alert-danger mt-4">
+      @if (mostrarResultado && cartaRevelada && !perdio) {
 
-          Perdiste
+        <div class="resultado-box mt-4">
+
+          La carta era:
+
+          <strong>
+
+            {{ obtenerValorCarta(cartaRevelada.valor) }}
+            {{ cartaRevelada.palo }}
+
+          </strong>
 
         </div>
 
         <button
-          class="btn-tarot mt-3"
-          (click)="reiniciar()">
+          class="btn-tarot mt-4"
+          (click)="siguienteRonda()">
 
-          Jugar otra vez
+          Siguiente →
 
         </button>
 
       }
+
+      <!-- HISTORIAL -->
+
+      <div class="historial-container">
+
+        <h4>
+          Cartas usadas
+        </h4>
+
+        <div class="historial-cartas">
+
+          @for (carta of historial; track $index) {
+
+            <div class="mini-carta">
+
+              <span>
+
+                {{ obtenerValorCarta(carta.valor) }}
+
+              </span>
+
+              <span>
+
+                {{ carta.palo }}
+
+              </span>
+
+            </div>
+
+          }
+
+        </div>
+
+      </div>
+
+      <!-- GAME OVER -->
+
+@if (perdio || ganoPartida) {
+
+  @if (perdio) {
+
+    <div class="alert alert-danger mt-4">
+
+      Perdiste la partida
+
+    </div>
+
+  }
+
+  @if (ganoPartida) {
+
+    <div class="alert alert-success mt-4">
+
+      ¡Completaste todo el mazo!
+
+    </div>
+
+  }
+
+  @if (cartaRevelada && perdio) {
+
+    <div class="resultado-box mt-3">
+
+      La última carta era:
+
+      <strong>
+
+        {{ obtenerValorCarta(cartaRevelada.valor) }}
+        {{ cartaRevelada.palo }}
+
+      </strong>
+
+    </div>
+
+  }
+
+  <button
+    class="btn-tarot mt-4"
+    (click)="reiniciar()">
+
+    Jugar otra vez
+
+  </button>
+
+}
 
     </div>
 

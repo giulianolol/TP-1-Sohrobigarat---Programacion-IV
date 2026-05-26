@@ -24,7 +24,7 @@ export class ResultadosComponent implements OnInit {
 
   preguntados: any[] = [];
 
-  pulsoFantasma: any[] = [];
+  pong: any[] = [];
 
   cargando = true;
 
@@ -34,7 +34,7 @@ export class ResultadosComponent implements OnInit {
 
   mostrarMasPreguntados = false;
 
-  mostrarMasPulso = false;
+  mostrarMasPong = false;
 
   constructor(
     private cdr: ChangeDetectorRef
@@ -50,7 +50,7 @@ export class ResultadosComponent implements OnInit {
 
       this.cargarPreguntados(),
 
-      this.cargarPulsoFantasma()
+      this.cargarPong()
 
     ]);
 
@@ -64,11 +64,11 @@ export class ResultadosComponent implements OnInit {
 
     const { data } = await supabase
 
-    .from('resultados_ahorcado')
+      .from('resultados_ahorcado')
 
-    .select('*')
+      .select('*')
 
-    .order('puntaje', { ascending: false });
+      .order('puntaje', { ascending: false });
 
     this.ahorcado = data || [];
 
@@ -78,11 +78,13 @@ export class ResultadosComponent implements OnInit {
 
     const { data } = await supabase
 
-    .from('resultados_mayor_menor')
+      .from('resultados_mayor_menor')
 
-    .select('*')
+      .select('*')
 
-    .order('puntaje', { ascending: false });
+      .order('puntaje', { ascending: false })
+
+      .order('tiempo_segundos', { ascending: true });
 
     this.mayorMenor = data || [];
 
@@ -92,27 +94,27 @@ export class ResultadosComponent implements OnInit {
 
     const { data } = await supabase
 
-    .from('resultados_preguntados')
+      .from('resultados_preguntados')
 
-    .select('*')
+      .select('*')
 
-    .order('puntaje', { ascending: false });
+      .order('puntaje', { ascending: false });
 
     this.preguntados = data || [];
 
   }
 
-  async cargarPulsoFantasma() {
+  async cargarPong() {
 
     const { data } = await supabase
 
-    .from('resultados_pulso_fantasma')
+      .from('resultados_pong')
 
-    .select('*')
+      .select('*')
 
-    .order('puntaje', { ascending: false });
+      .order('puntaje', { ascending: false });
 
-    this.pulsoFantasma = data || [];
+    this.pong = data || [];
 
   }
 
@@ -120,23 +122,28 @@ export class ResultadosComponent implements OnInit {
 
     this.mostrarMasAhorcado =
       !this.mostrarMasAhorcado;
+
   }
 
   toggleMayorMenor() {
 
     this.mostrarMasMayorMenor =
       !this.mostrarMasMayorMenor;
+
   }
 
   togglePreguntados() {
 
     this.mostrarMasPreguntados =
       !this.mostrarMasPreguntados;
+
   }
 
-  togglePulso() {
+  togglePong() {
 
-    this.mostrarMasPulso =
-      !this.mostrarMasPulso;
+    this.mostrarMasPong =
+      !this.mostrarMasPong;
+
   }
+
 }

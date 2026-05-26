@@ -63,4 +63,7 @@ export class AuthService {
   return data.user;
 
 }
+isAdmin(user: any): boolean {
+  return user?.email === 'subaru@subaru.com';
+}
 }

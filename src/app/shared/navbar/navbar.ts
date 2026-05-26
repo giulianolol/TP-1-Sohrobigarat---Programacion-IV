@@ -15,7 +15,7 @@ export class NavbarComponent {
   user$;
 
   constructor(
-    private auth: AuthService,
+    public auth: AuthService,
     private router: Router
   ) {
     this.user$ = this.auth.user$;
@@ -23,9 +23,9 @@ export class NavbarComponent {
 
   async logout() {
 
-  await this.auth.logout();
+    await this.auth.logout();
 
-  this.router.navigate(['/login']);
+    this.router.navigate(['/login']);
 
-}
+  }
 }

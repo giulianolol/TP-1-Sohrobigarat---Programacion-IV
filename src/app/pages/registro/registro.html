@@ -4,48 +4,126 @@
 
     <div class="card-register">
 
-      <h2 class="mb-4">Registro</h2>
+      <h2 class="mb-4">
+        Registro
+      </h2>
+
+      <!-- NOMBRE -->
 
       <input
         [(ngModel)]="nombre"
+        (blur)="tocarCampo('nombre')"
         placeholder="Nombre"
-        class="form-control mb-3">
+        class="form-control mb-1"
+        [class.is-invalid]="camposTocados.nombre && !nombre.trim()">
+
+      @if (camposTocados.nombre && !nombre.trim()) {
+
+        <div class="text-danger mb-3">
+
+          Ingresa un nombre
+
+        </div>
+
+      }
+
+      <!-- APELLIDO -->
 
       <input
         [(ngModel)]="apellido"
+        (blur)="tocarCampo('apellido')"
         placeholder="Apellido"
-        class="form-control mb-3">
+        class="form-control mb-1"
+        [class.is-invalid]="camposTocados.apellido && !apellido.trim()">
+
+      @if (camposTocados.apellido && !apellido.trim()) {
+
+        <div class="text-danger mb-3">
+
+          Ingresa un apellido
+
+        </div>
+
+      }
+
+      <!-- EDAD -->
 
       <input
         [(ngModel)]="edad"
         type="number"
+        (blur)="tocarCampo('edad')"
         placeholder="Edad"
-        class="form-control mb-3">
+        class="form-control mb-1"
+        [class.is-invalid]="camposTocados.edad && (!edad || edad < 1)">
+
+      @if (camposTocados.edad && (!edad || edad < 1)) {
+
+        <div class="text-danger mb-3">
+
+          Ingresa una edad válida
+
+        </div>
+
+      }
+
+      <!-- EMAIL -->
 
       <input
         [(ngModel)]="email"
         type="email"
+        (blur)="tocarCampo('email')"
         placeholder="Email"
-        class="form-control mb-3">
+        class="form-control mb-1"
+        [class.is-invalid]="camposTocados.email && !emailValido()">
+
+      @if (camposTocados.email && !emailValido()) {
+
+        <div class="text-danger mb-3">
+
+          Correo inválido
+
+        </div>
+
+      }
+
+      <!-- PASSWORD -->
 
       <input
         [(ngModel)]="password"
         type="password"
+        (blur)="tocarCampo('password')"
         placeholder="Contraseña"
-        class="form-control mb-3">
+        class="form-control mb-1"
+        [class.is-invalid]="camposTocados.password && !passwordValida()">
+
+      @if (camposTocados.password && !passwordValida()) {
+
+        <div class="text-danger mb-3">
+
+          Mínimo 6 caracteres
+
+        </div>
+
+      }
+
+      <!-- BOTON -->
 
       <button
         (click)="register()"
-        class="btn btn-success w-100"
-        [disabled]="loading">
+        class="btn btn-success w-100 mt-3"
+        [disabled]="loading || !formularioValido()">
 
         {{ loading ? 'Registrando...' : 'Registrarse' }}
 
       </button>
 
+      <!-- ERROR -->
+
       @if (error) {
 
-        <div class="alert alert-danger mt-3" role="alert">
+        <div
+          class="alert alert-danger mt-3"
+          role="alert">
 
           {{ error }}
 
@@ -53,9 +131,13 @@
 
       }
 
+      <!-- SUCCESS -->
+
       @if (success) {
 
-        <div class="alert alert-success mt-3" role="alert">
+        <div
+          class="alert alert-success mt-3"
+          role="alert">
 
           {{ success }}
 

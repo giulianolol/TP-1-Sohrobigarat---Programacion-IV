@@ -20,7 +20,7 @@ export class Home implements OnInit {
 
   audio = new Audio('/assets/music/musica.mp3');
 
-  constructor(private auth: AuthService) {
+  constructor(public auth: AuthService) {
 
     this.user$ = this.auth.user$;
   }
