@@ -35,7 +35,7 @@ export class MayorMenorComponent implements OnInit {
 
   nuevaCarta() {
 
-    this.cartaActual = Math.floor(Math.random() * 13) + 1;
+    this.cartaActual = Math.floor(Math.random() * 22);
 
   }
 
@@ -43,7 +43,7 @@ export class MayorMenorComponent implements OnInit {
 
     if (this.perdio) return;
 
-    this.siguienteCarta = Math.floor(Math.random() * 13) + 1;
+    this.siguienteCarta = Math.floor(Math.random() * 22);
 
     let acerto = false;
 
@@ -84,7 +84,7 @@ export class MayorMenorComponent implements OnInit {
 
   obtenerCartaVisual(numero: number): string {
 
-  return numero.toString();
+  return `/assets/tarot/${numero}.jpg`;
 
 }
 

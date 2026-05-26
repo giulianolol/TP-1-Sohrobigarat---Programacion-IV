@@ -1,3 +1,57 @@
+
+body {
+
+  margin: 0;
+
+  padding: 0;
+}
+
+.container {
+
+  position: relative;
+
+  z-index: 2;
+}
+
+/* WALLPAPER */
+
+:host {
+
+  display: block;
+
+  min-height: 100vh;
+
+  background-image:
+    url('/assets/wallpaperquiensoy.jpg');
+
+  background-size: cover;
+
+  background-position: center;
+
+  background-repeat: no-repeat;
+
+  padding-bottom: 80px;
+}
+
+:host::before {
+
+  content: '';
+
+  position: fixed;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      rgba(0,0,0,0.78),
+      rgba(0,0,0,0.82)
+    );
+
+  backdrop-filter: blur(3px);
+
+  z-index: 0;
+}
+
 .card-profile {
   text-align: center;
 }

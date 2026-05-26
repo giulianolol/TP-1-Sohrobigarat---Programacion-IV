@@ -2,7 +2,9 @@
 
   <div class="card-ahorcado p-4">
 
-    <h1 class="mb-4">Juego del Ahorcado</h1>
+    <h1 class="mb-4">
+      Juego del Ahorcado
+    </h1>
 
     <h4 class="mb-3">
       Puntaje: {{ puntaje }}
@@ -18,31 +20,48 @@
 
     <div class="letras-container mt-4">
 
-      <button
-        *ngFor="let letra of abecedario"
-        class="btn btn-dark letra-btn"
-        [disabled]="letrasUsadas.includes(letra) || gano || perdio"
-        (click)="seleccionarLetra(letra)">
+      @for (letra of abecedario; track letra) {
 
-        {{ letra }}
+        <button
+          class="btn btn-dark letra-btn"
+          [disabled]="letrasUsadas.includes(letra) || gano || perdio"
+          (click)="seleccionarLetra(letra)">
 
-      </button>
+          {{ letra }}
+
+        </button>
+
+      }
 
     </div>
 
-    <div *ngIf="gano" class="alert alert-success mt-4">
-      ¡Ganaste!
-    </div>
+    @if (gano) {
 
-    <div *ngIf="perdio" class="alert alert-danger mt-4">
-      Perdiste. La palabra era:
-      <strong>{{ palabraSecreta }}</strong>
-    </div>
+      <div class="alert alert-success mt-4">
+
+        ¡Ganaste!
+
+      </div>
+
+    }
+
+    @if (perdio) {
+
+      <div class="alert alert-danger mt-4">
+
+        Perdiste. La palabra era:
+        <strong>{{ palabraSecreta }}</strong>
+
+      </div>
+
+    }
 
     <button
       class="btn btn-primary mt-4"
       (click)="reiniciar()">
+
       Jugar otra vez
+
     </button>
 
   </div>

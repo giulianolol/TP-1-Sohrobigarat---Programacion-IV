@@ -43,4 +43,7 @@ export class Home implements OnInit {
 
     this.auth.logout();
   }
+
+  
 }
+

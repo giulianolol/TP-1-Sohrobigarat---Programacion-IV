@@ -2,16 +2,54 @@
 
   @if (user$ | async; as u) {
 
-    <div class="card-profile text-center p-4">
+    <div class="card-profile text-center p-5">
 
-      <img [src]="$any(u).avatar_url" class="avatar mb-3">
+      <div class="avatar-container mb-4">
 
-      <h2>{{ $any(u).name }}</h2>
-      <p class="bio">{{ $any(u).bio }}</p>
+        <img
+          [src]="$any(u).avatar_url"
+          class="avatar">
 
-      <div class="stats">
-        <p><strong>Repos:</strong> {{ $any(u).public_repos }}</p>
-        <p><strong>Seguidores:</strong> {{ $any(u).followers }}</p>
+      </div>
+
+      <h1 class="nombre">
+
+        {{ $any(u).name }}
+
+      </h1>
+
+      <p class="bio">
+
+        {{ $any(u).bio }}
+
+      </p>
+
+      <div class="stats mt-4">
+
+        <div class="stat-box">
+
+          <h3>
+            {{ $any(u).public_repos }}
+          </h3>
+
+          <span>
+            Repositorios
+          </span>
+
+        </div>
+
+        <div class="stat-box">
+
+          <h3>
+            {{ $any(u).followers }}
+          </h3>
+
+          <span>
+            Seguidores
+          </span>
+
+        </div>
+
       </div>
 
     </div>
@@ -20,13 +58,48 @@
 
 </div>
 
-<div class="container mt-5">
-  <div class="card-game p-4">
-    <h3>Pulso Fantasma</h3>
+<div class="container mt-5 mb-5">
+
+  <div class="card-game p-5">
+
+    <h2 class="mb-4">
+      Juego Propio — Pulso Fantasma
+    </h2>
+
     <p>
-      Mi juego consiste en medir los reflejos del jugador. Aparecerá un botón en pantalla en un tiempo aleatorio y el usuario deberá hacer click lo más rápido posible.
-      El sistema calculará el tiempo de reacción y generará una puntuación.
-      La puntuación se guarda en la base de datos junto con un tiempo promedio y los datos del usuario.
+      Pulso Fantasma es un juego diseñado para medir
+      los reflejos, la precisión y la velocidad de reacción
+      del jugador.
     </p>
+
+    <p>
+      Durante la partida, una señal aparecerá de manera
+      inesperada en pantalla y el usuario deberá reaccionar
+      lo más rápido posible para obtener el mayor puntaje.
+    </p>
+
+    <p>
+      El sistema calcula el tiempo de reacción y genera
+      una puntuación basada en la rapidez y precisión
+      de cada intento.
+    </p>
+
+    <div class="tarot-box mt-5">
+
+      <h4>
+        Temática del Proyecto
+      </h4>
+
+      <p>
+        Toda la aplicación fue desarrollada siguiendo una
+        estética inspirada en el tarot y el misticismo,
+        utilizando cartas, ambientaciones oscuras,
+        efectos visuales suaves y música acorde.
+        Espero lo disfrutes :)
+      </p>
+
+    </div>
+
   </div>
+
 </div>

@@ -26,8 +26,6 @@
   padding: 40px;
 }
 
-/* CONTENIDO */
-
 .home-content {
 
   width: 100%;
@@ -36,8 +34,6 @@
 
   margin: auto;
 }
-
-/* TITULOS */
 
 .titulo {
 
@@ -79,8 +75,6 @@
   font-weight: 500;
 }
 
-/* GRID */
-
 .games-grid {
 
   display: grid;
@@ -91,8 +85,6 @@
 
   justify-items: center;
 }
-
-/* CARD */
 
 .game-card {
 
@@ -136,8 +128,6 @@
     rgba(255,255,255,0.08);
 }
 
-/* IMAGENES */
-
 .game-image {
 
   width: 100%;
@@ -146,7 +136,7 @@
 
   border-radius: 22px;
 
-  background-size: cover;
+  background-size: contain;
 
   background-position: center;
 
@@ -156,9 +146,9 @@
 
   box-shadow:
     0 10px 25px rgba(0,0,0,0.4);
-}
 
-/* TEXTOS */
+  background-color: rgba(0,0,0,0.25);
+}
 
 .game-card h2 {
 
@@ -189,8 +179,6 @@
 
   align-items: center;
 }
-
-/* BOTONES */
 
 .game-btn {
 
@@ -234,8 +222,6 @@
   cursor: pointer;
 }
 
-/* LOGOUT */
-
 .logout-container {
 
   display: flex;
@@ -273,8 +259,6 @@
   cursor: pointer;
 }
 
-/* INVITADO */
-
 .guest-box {
 
   margin-top: 100px;
@@ -296,8 +280,6 @@
 
   text-align: center;
 }
-
-/* IMAGENES */
 
 .ahorcado-img {
 
@@ -334,8 +316,6 @@
   background-image:
     url('/assets/resultados.jpg');
 }
-
-/* RESPONSIVE */
 
 @media (max-width: 1500px) {
 

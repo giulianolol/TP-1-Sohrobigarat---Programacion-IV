@@ -1,35 +1,38 @@
 <div class="chat-container">
 
   <h1 class="text-center mb-4">
-    💬 Sala de Chat
+    Sala de Chat
   </h1>
 
   <div class="mensajes">
 
-    <div
-      *ngFor="let msg of mensajes"
-      class="mensaje"
-      [class.mio]="esMio(msg.usuario)">
+    @for (msg of mensajes; track msg.id) {
 
-      <div class="info">
+      <div
+        class="mensaje"
+        [class.mio]="esMio(msg.usuario)">
 
-        <strong>
-          {{ msg.usuario }}
-        </strong>
+        <div class="info">
 
-        <span>
-          {{ msg.fecha | date:'HH:mm' }}
-        </span>
+          <strong>
+            {{ msg.usuario }}
+          </strong>
+
+          <span>
+            {{ msg.fecha | date:'HH:mm' }}
+          </span>
+
+        </div>
+
+        <div class="texto">
+
+          {{ msg.mensaje }}
+
+        </div>
 
       </div>
 
-      <div class="texto">
-
-        {{ msg.mensaje }}
-
-      </div>
-
-    </div>
+    }
 
   </div>
 

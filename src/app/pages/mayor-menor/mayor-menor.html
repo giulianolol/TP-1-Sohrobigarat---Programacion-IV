@@ -1,57 +1,64 @@
 <div class="container text-center mt-5">
 
-  <div class="card-juego p-5">
+  <div class="card-juego">
 
-    <h1 class="mb-4">
+    <h1>
       Mayor o Menor
     </h1>
 
-    <h3 class="mb-3">
+    <h3>
       Puntaje: {{ puntaje }}
     </h3>
 
-    <div class="carta mb-5">
+    <div class="carta">
 
-      {{ obtenerCartaVisual(cartaActual) }}
+      <img
+        [src]="obtenerCartaVisual(cartaActual)"
+        class="carta-tarot">
 
     </div>
 
-    <div *ngIf="!perdio">
+    @if (!perdio) {
+
+      <div class="botones">
+
+        <button
+          class="btn-tarot"
+          (click)="elegir('mayor')">
+
+          Mayor ↑
+
+        </button>
+
+        <button
+          class="btn-tarot"
+          (click)="elegir('menor')">
+
+          Menor ↓
+
+        </button>
+
+      </div>
+
+    }
+
+    @if (perdio) {
+
+      <div class="alert alert-danger mt-4">
+
+        Perdiste
+
+      </div>
 
       <button
-        class="btn btn-success btn-lg m-3"
-        (click)="elegir('mayor')">
+        class="btn-tarot mt-3"
+        (click)="reiniciar()">
 
-        Mayor ↑
+        Jugar otra vez
 
       </button>
 
-      <button
-        class="btn btn-danger btn-lg m-3"
-        (click)="elegir('menor')">
-
-        Menor ↓
-
-      </button>
-
-    </div>
-
-    <div
-      *ngIf="perdio"
-      class="alert alert-danger mt-4">
-
-      Perdiste
-
-    </div>
-
-    <button
-      *ngIf="perdio"
-      class="btn btn-primary mt-4"
-      (click)="reiniciar()">
-
-      Jugar otra vez
-
-    </button>
+    }
 
   </div>
 

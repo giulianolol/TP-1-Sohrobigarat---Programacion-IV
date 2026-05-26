@@ -6,9 +6,7 @@
       Home
     </a>
 
-    <!-- USUARIO NO LOGEADO -->
-
-    <ng-container *ngIf="!(user$ | async)">
+    @if (!(user$ | async)) {
 
       <a routerLink="/login" class="nav-btn me-2">
         Login
@@ -18,11 +16,9 @@
         Registro
       </a>
 
-    </ng-container>
+    }
 
-    <!-- USUARIO LOGEADO -->
-
-    <ng-container *ngIf="user$ | async">
+    @else {
 
       <a routerLink="/quien-soy" class="nav-btn me-2">
         Quién Soy
@@ -37,7 +33,7 @@
 
       </a>
 
-    </ng-container>
+    }
 
   </div>
 

@@ -12,9 +12,7 @@
         Un portal místico donde cada juego revela tu destino.
       </p>
 
-      <!-- LOGUEADO -->
-
-      <ng-container *ngIf="user$ | async as user; else noLogueado">
+      @if (user$ | async; as user) {
 
         <h3 class="bienvenida">
 
@@ -186,11 +184,9 @@
 
         </div>
 
-      </ng-container>
+      }
 
-      <!-- INVITADO -->
-
-      <ng-template #noLogueado>
+      @else {
 
         <div class="guest-box">
 
@@ -204,7 +200,7 @@
 
         </div>
 
-      </ng-template>
+      }
 
     </div>
 
