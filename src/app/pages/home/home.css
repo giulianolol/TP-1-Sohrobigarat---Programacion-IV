@@ -130,12 +130,12 @@
 }
 
 .game-card h2 {
-  font-size: 1.2rem;
-  margin-bottom: 10px;
+  font-size: 1.8rem;
+  margin-bottom: 1px;
 }
 
 .game-card p {
-  font-size: 0.9rem;
+  font-size: 1.3rem;
   margin-bottom: 18px;
   color: #cbd5e1;
 }

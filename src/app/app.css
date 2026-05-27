@@ -9,8 +9,9 @@
   object-fit: cover;
 
   z-index: -2;
-}
 
+  pointer-events: none;
+}
 .fondo-overlay {
   position: fixed;
   inset: 0;
