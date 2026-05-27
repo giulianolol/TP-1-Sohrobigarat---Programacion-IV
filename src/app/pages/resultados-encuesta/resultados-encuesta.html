@@ -4,23 +4,52 @@
 
   <div class="encuestas-grid">
 
-    @for (e of encuestas; track e.id) {
+    @for (e of encuestas(); track e.id) {
 
       <div class="card">
 
-        <h5>{{ e.nombre }} {{ e.apellido }}</h5>
+        <h5>
+          {{ e.nombre }} {{ e.apellido }}
+        </h5>
 
-        <p><strong>Edad:</strong> {{ e.edad }}</p>
+        <p>
+          <strong>Edad:</strong>
+          {{ e.edad }}
+        </p>
 
-        <p><strong>Teléfono:</strong> {{ e.telefono }}</p>
+        <p>
+          <strong>Teléfono:</strong>
+          {{ e.telefono }}
+        </p>
 
-        <p><strong>Juego favorito:</strong> {{ e.juego_favorito }}</p>
+        <p>
+          <strong>Juego favorito:</strong>
+          {{ e.juego_favorito }}
+        </p>
 
-        <p><strong>Aspecto favorito:</strong> {{ e.aspecto_favorito }}</p>
+        <p>
+          <strong>Aspectos favoritos:</strong>
 
-        <p><strong>¿Recomendaría?:</strong> {{ e.recomendaria }}</p>
+          @if (e.aspectos?.length) {
 
-        <p><strong>Sugerencia:</strong> {{ e.sugerencia }}</p>
+            {{ e.aspectos.join(', ') }}
+
+          } @else {
+
+            Sin datos
+
+          }
+        </p>
+
+        <p>
+          <strong>¿Recomendaría?:</strong>
+          {{ e.recomendaria }}
+        </p>
+
+        <p>
+          <strong>Sugerencia:</strong>
+          {{ e.sugerencia }}
+        </p>
 
       </div>
 
