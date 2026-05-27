@@ -6,6 +6,7 @@ import {
   ReactiveFormsModule,
   Validators
 } from '@angular/forms';
+
 import { supabase } from '../../services/auth';
 import { AuthService } from '../../services/auth';
 
@@ -19,6 +20,7 @@ import { AuthService } from '../../services/auth';
 export class Encuesta {
 
   encuestaForm: FormGroup;
+
   error = '';
   loading = false;
   success = '';
@@ -29,7 +31,9 @@ export class Encuesta {
   ) {
 
     this.encuestaForm = this.fb.group({
+
       nombre: ['', Validators.required],
+
       apellido: ['', Validators.required],
 
       edad: [
@@ -51,57 +55,90 @@ export class Encuesta {
       ],
 
       juegoFavorito: ['', Validators.required],
+
       aspectos: ['', Validators.required],
+
       recomendaria: ['', Validators.required],
+
       sugerencia: ['', Validators.required]
     });
   }
 
   async enviarEncuesta() {
 
-  this.error = '';
-  this.success = '';
+    this.error = '';
+    this.success = '';
 
-  if (this.encuestaForm.invalid) {
-    this.error = 'Completá correctamente todos los campos';
-    this.encuestaForm.markAllAsTouched();
-    return;
-  }
+    if (this.encuestaForm.invalid) {
 
-  this.loading = true;
+      this.error =
+        'Completá correctamente todos los campos';
 
-  const user = await this.auth.getUser();
+      this.encuestaForm.markAllAsTouched();
 
-  if (!user) {
-    this.error = 'Usuario no autenticado';
-    this.loading = false;
-    return;
-  }
+      return;
+    }
 
-const { error } = await supabase
+    this.loading = true;
+
+    const user = await this.auth.getUser();
+
+    if (!user) {
+
+      this.error = 'Usuario no autenticado';
+
+      this.loading = false;
+
+      return;
+    }
+    console.log(user);
+    
+    console.log(this.encuestaForm.value);
+
+    const { error } = await supabase
   .from('encuestas')
   .insert({
+
     user_id: user.id,
 
     nombre: this.encuestaForm.value.nombre,
+
     apellido: this.encuestaForm.value.apellido,
+
     edad: this.encuestaForm.value.edad,
+
     telefono: this.encuestaForm.value.telefono,
 
-    juego_favorito: this.encuestaForm.value.juegoFavorito,
-    aspectos: this.encuestaForm.value.aspectoFavorito,
-    recomendaria: this.encuestaForm.value.recomendaria,
-    sugerencia: this.encuestaForm.value.sugerencia
+    juego_favorito:
+      this.encuestaForm.value.juegoFavorito,
+
+    aspectos: [
+      this.encuestaForm.value.aspectos
+    ],
+
+    recomendaria:
+      this.encuestaForm.value.recomendaria,
+
+    sugerencia:
+      this.encuestaForm.value.sugerencia
   });
 
-  if (error) {
-    this.error = error.message;
-    this.loading = false;
-    return;
-  }
+    if (error) {
 
-  this.success = 'Encuesta enviada correctamente';
-  this.encuestaForm.reset();
-  this.loading = false;
-}
+      console.log(error)
+
+      this.error = error.message;
+
+      this.loading = false;
+
+      return;
+    }
+
+    this.success =
+      'Encuesta enviada correctamente';
+
+    this.encuestaForm.reset();
+
+    this.loading = false;
+  }
 }
